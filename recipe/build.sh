@@ -13,8 +13,8 @@ echo "${PKG_VERSION}" > conda/.version
 $PYTHON setup.py install --single-version-externally-managed --record=record.txt
 
 # Install the activation scripts.
-cp $SRC_DIR/bin/activate $PREFIX/bin/activate
-cp $SRC_DIR/bin/deactivate $PREFIX/bin/deactivate
+cp $SRC_DIR/shell/activate $PREFIX/bin/activate
+cp $SRC_DIR/shell/deactivate $PREFIX/bin/deactivate
 
 # Install the fish activation script.
 mkdir -p $PREFIX/etc/fish/conf.d/

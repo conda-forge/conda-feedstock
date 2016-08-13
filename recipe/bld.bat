@@ -25,10 +25,10 @@ echo %PKG_VERSION% > conda\.version
 if errorlevel 1 exit 1
 
 :: Install the activation scripts.
-copy %SRC_DIR%\bin\activate %PREFIX%\Scripts\activate
-copy %SRC_DIR%\bin\activate.bat %PREFIX%\Scripts\activate.bat
-copy %SRC_DIR%\bin\deactivate %PREFIX%\Scripts\deactivate
-copy %SRC_DIR%\bin\deactivate.bat %PREFIX%\Scripts\deactivate.bat
+copy %SRC_DIR%\shell\activate %PREFIX%\Scripts\activate
+copy %SRC_DIR%\shell\activate.bat %PREFIX%\Scripts\activate.bat
+copy %SRC_DIR%\shell\deactivate %PREFIX%\Scripts\deactivate
+copy %SRC_DIR%\shell\deactivate.bat %PREFIX%\Scripts\deactivate.bat
 
 :: Install fish activation script.
 mkdir %PREFIX%\etc\fish\conf.d
