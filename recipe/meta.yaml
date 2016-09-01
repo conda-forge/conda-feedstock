@@ -13,7 +13,7 @@ source:
   sha256: {{ checksum }}
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - conda = conda.cli:main
   always_include_files:
@@ -44,12 +44,6 @@ requirements:
   build:
     - python
     - setuptools
-    - conda-env >=2.5
-    - menuinst                  # [win]
-    - pycosat
-    - pyyaml
-    - requests
-    - ruamel_yaml
 
   run:
     - python
