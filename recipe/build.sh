@@ -7,7 +7,6 @@ unlink $PREFIX/bin/deactivate
 
 # Prep conda install
 export CONDA_DEFAULT_ENV=''
-echo "${PKG_VERSION}" > conda/.version
 
 # Install the Python code
 $PYTHON setup.py install
