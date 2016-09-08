@@ -21,7 +21,7 @@ set CONDA_DEFAULT_ENV=
 echo %PKG_VERSION% > conda\.version
 
 :: Install the Python code
-%PYTHON% setup.py install --single-version-externally-managed --record=record.txt
+%PYTHON% setup.py install
 if errorlevel 1 exit 1
 
 :: Install the activation scripts.

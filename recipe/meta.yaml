@@ -41,22 +41,14 @@ build:
 requirements:
   build:
     - python
-    - setuptools
-    - conda-env >=2.5
-    - menuinst                  # [win]
-    - pycosat
-    - pyyaml
-    - requests
-    - ruamel_yaml
-
   run:
     - python
-    - conda-env >=2.5
-    - menuinst                  # [win]
-    - pycosat
-    - pyyaml
-    - requests
-    - ruamel_yaml
+    # - conda-env >=2.6
+    - enum34                 # [py<34]
+    - menuinst               # [win]
+    - pycosat >=0.6.1
+    - requests >=2.5.3
+    - ruamel_yaml >=0.11.14
 
 test:
   imports:
