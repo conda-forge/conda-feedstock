@@ -1,16 +1,14 @@
 {% set name = "conda" %}
-{% set version = "4.1.12" %}
-{% set checksum = "302c3cdfa05e7a0ca16eb3a568e85079ab8bd98697ca662d0335e622247dcf50" %}
-
+{% set version = "4.2.5" %}
+{% set checksum = "dfc84d3ed8733b7326f1fd7d81f93ff06b4caac5f7854e29eca8bcc653a53eb8" %}
 
 package:
   name: conda
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
-  sha256: {{ checksum }}
+  git_url: https://github.com/conda/conda.git
+  git_rev: 4.2.x
 
 build:
   number: 0
