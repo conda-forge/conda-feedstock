@@ -18,6 +18,7 @@ del %PREFIX%\exec\deactivate.bat
 
 :: Prep conda install
 set CONDA_DEFAULT_ENV=
+echo %PKG_VERSION% > conda\.version
 
 :: Install the Python code
 %PYTHON% setup.py install
