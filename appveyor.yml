@@ -77,9 +77,6 @@ install:
     - cmd: conda install -n root --quiet --yes conda-forge-build-setup
     - cmd: run_conda_forge_build_setup
 
-    # Add a hack to switch to `conda` version `4.1.12` before activating.
-    - cmd: conda install --yes --quiet conda=4.1.12
-
 # Skip .NET project specific build phase.
 build: off
 
