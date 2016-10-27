@@ -1,7 +1,6 @@
 {% set name = "conda" %}
-{% set version = "4.1.12" %}
-{% set checksum = "302c3cdfa05e7a0ca16eb3a568e85079ab8bd98697ca662d0335e622247dcf50" %}
-
+{% set version = "4.2.11" %}
+{% set checksum = "7cc6696aaf50d1ff5ce502f99c7062ce4258dadfb0fb94b01874c999c929f3c2" %}
 
 package:
   name: conda
@@ -43,22 +42,14 @@ build:
 requirements:
   build:
     - python
-    - setuptools
-    - conda-env >=2.5
-    - menuinst                  # [win]
-    - pycosat
-    - pyyaml
-    - requests
-    - ruamel_yaml
-
   run:
     - python
-    - conda-env >=2.5
-    - menuinst                  # [win]
-    - pycosat
-    - pyyaml
-    - requests
-    - ruamel_yaml
+    - conda-env >=2.6
+    - enum34                 # [py<34]
+    - menuinst               # [win]
+    - pycosat >=0.6.1
+    - requests >=2.5.3
+    - ruamel_yaml >=0.11.14
 
 test:
   imports:
