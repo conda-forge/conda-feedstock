@@ -59,8 +59,11 @@ test:
   commands:
     - which conda                  # [unix]
     - where conda                  # [win]
+    - which conda-env              # [unix]
+    - where conda-env              # [win]
     - conda --version
     - conda info
+    - conda env --help
 
 about:
   home: https://github.com/conda/conda
