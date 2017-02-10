@@ -73,8 +73,13 @@ about:
 extra:
   recipe-maintainers:
     - jakirkham
+    - jjhelmus
     - kalefranz
     - mcg1969
-    - msarahan
-    - pelson
     - mingwandroid
+    - msarahan
+    - mwcraig
+    - ocefpaf
+    - patricksnape
+    - pelson
+    - scopatz
