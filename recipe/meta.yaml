@@ -12,7 +12,7 @@ source:
   sha256: {{ checksum }}
 
 build:
-  number: 0
+  number: 1
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -29,8 +29,12 @@ build:
     - Scripts/deactivate                   # [win]
 
 requirements:
-  build:
+  host:
     - python
+    - pycosat
+    - pyopenssl
+    - requests
+    - ruamel_yaml
   run:
     - python
     - conda-env >=2.6
