@@ -1,6 +1,6 @@
 {% set name = "conda" %}
-{% set version = "4.2.16" %}
-{% set checksum = "e4966bb85a1553032e361568a63fcd8a46495c3b9d50c3b4151369c5b0e04190" %}
+{% set version = "4.3.21" %}
+{% set checksum = "9c079479c4440e09160c06e511ee8f507eaaf22ddc84b1d2d22fee0238169568" %}
 
 package:
   name: conda
@@ -20,9 +20,6 @@ build:
     - bin/conda                            # [unix]
     - bin/activate                         # [unix]
     - bin/deactivate                       # [unix]
-    - exec/conda                           # [unix]
-    - exec/activate                        # [unix]
-    - exec/deactivate                      # [unix]
     - etc/fish/conf.d/conda.fish           # [unix]
     - Scripts/activate.bat                 # [win]
     - Scripts/activate                     # [win]
@@ -58,6 +55,7 @@ test:
     - conda
 
   commands:
+    - python -c "from __future__ import print_function; import conda; print(conda.__version__)"
     - which conda                  # [unix]
     - where conda                  # [win]
     - which conda-env              # [unix]
