@@ -49,9 +49,11 @@ install:
     # Cywing's git breaks conda-build. (See https://github.com/conda-forge/conda-smithy-feedstock/pull/2.)
     - cmd: rmdir C:\cygwin /s /q
 
-    # Add path, activate `conda` and update conda.
+    # Activate `conda`.
     - cmd: call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
-    - cmd: conda update --yes --quiet conda
+
+    # Disable `conda`'s auto-update feature.
+    - cmd: conda config --set auto_update_conda False
 
     - cmd: set PYTHONUNBUFFERED=1
 
