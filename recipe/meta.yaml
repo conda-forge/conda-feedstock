@@ -12,7 +12,10 @@ source:
   sha256: {{ checksum }}
 
 build:
-  number: 0
+  number: 1
+  # These are present when the new environment is created
+  # so we have to exempt them from the list of initial files
+  # for conda-build to realize they should be included.
   entry_points:
     - conda = conda.cli:main
     - conda-env = conda_env.cli.main:main
@@ -20,22 +23,10 @@ build:
     - bin/conda                            # [unix]
     - bin/activate                         # [unix]
     - bin/deactivate                       # [unix]
-    - etc/fish/conf.d/conda.fish           # [unix]
     - Scripts/activate.bat                 # [win]
     - Scripts/activate                     # [win]
-    - Scripts/conda.exe                    # [win]
-    - Scripts/conda-script.py              # [win]
-    - Scripts/conda-script.pyc             # [win]
     - Scripts/deactivate.bat               # [win]
     - Scripts/deactivate                   # [win]
-    - exec/activate.bat                    # [win]
-    - exec/activate                        # [win]
-    - exec/conda.exe                       # [win]
-    - exec/conda-script.py                 # [win]
-    - exec/conda-script.pyc                # [win]
-    - exec/deactivate.bat                  # [win]
-    - exec/deactivate                      # [win]
-    - etc/fish/conf.d/conda.fish           # [win]
 
 requirements:
   build:
@@ -55,19 +46,33 @@ test:
     - conda
 
   commands:
+    # Check version via import.
     - python -c "from __future__ import print_function; import conda; print(conda.__version__)"
+
+    # Show where the conda commands are.
     - which conda                  # [unix]
     - where conda                  # [win]
     - which conda-env              # [unix]
     - where conda-env              # [win]
+
+    # Run some simple conda commands.
     - conda --version
     - conda info
     - conda env --help
 
 about:
-  home: https://github.com/conda/conda
-  summary: OS-agnostic, system-level binary package manager.
+  home: http://conda.pydata.org/
   license: BSD 3-Clause
+  license_file: LICENSE.txt
+  summary: OS-agnostic, system-level binary package and environment manager.
+  description: |
+    Conda is an open source package management system and environment
+    management system for installing multiple versions of software packages
+    and their dependencies and switching easily between them. It works on
+    Linux, OS X and Windows, and was created for Python programs but can
+    package and distribute any software.
+  doc_url: http://conda.pydata.org/docs/
+  dev_url: https://github.com/conda/conda
 
 extra:
   recipe-maintainers:

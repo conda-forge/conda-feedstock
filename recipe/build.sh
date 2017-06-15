@@ -15,4 +15,3 @@ $PYTHON conda.recipe/setup.py install
 # Install the fish activation script.
 mkdir -p $PREFIX/etc/fish/conf.d/
 cp $SRC_DIR/shell/conda.fish $PREFIX/etc/fish/conf.d/
-
