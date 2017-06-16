@@ -42,6 +42,10 @@ requirements:
     - ruamel_yaml >=0.11.14
 
 test:
+  files:
+    - test_conda.bat                # [win]
+    - test_conda.sh                 # [unix]
+
   imports:
     - conda
 
