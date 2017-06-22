@@ -1,6 +1,6 @@
 {% set name = "conda" %}
-{% set version = "4.3.21" %}
-{% set checksum = "9c079479c4440e09160c06e511ee8f507eaaf22ddc84b1d2d22fee0238169568" %}
+{% set version = "4.3.22" %}
+{% set checksum = "c194ff82edf564989ad68abd89bb1341c0c3f55ea8a3c55da3b22816a574c6bf" %}
 
 package:
   name: conda
@@ -12,7 +12,7 @@ source:
   sha256: {{ checksum }}
 
 build:
-  number: 1
+  number: 0
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
