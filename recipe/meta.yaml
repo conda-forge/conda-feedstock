@@ -42,23 +42,12 @@ requirements:
     - ruamel_yaml >=0.11.14
 
 test:
+  files:
+    - test_conda.bat                # [win]
+    - test_conda.sh                 # [unix]
+
   imports:
     - conda
-
-  commands:
-    # Check version via import.
-    - python -c "from __future__ import print_function; import conda; print(conda.__version__)"
-
-    # Show where the conda commands are.
-    - which conda                  # [unix]
-    - where conda                  # [win]
-    - which conda-env              # [unix]
-    - where conda-env              # [win]
-
-    # Run some simple conda commands.
-    - conda --version
-    - conda info
-    - conda env --help
 
 about:
   home: http://conda.pydata.org/
