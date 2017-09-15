@@ -1,18 +1,17 @@
 {% set name = "conda" %}
 {% set version = "4.3.26" %}
-{% set checksum = "e9bfcf8a2cbe7cd01c998daffb27274efae68c3d74493ce1d1b211565b14a40a" %}
+{% set sha1 = "f0032e064a8122ebdb4a0d7885a0b61a053e58f5" %}
 
 package:
   name: conda
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
-  sha256: {{ checksum }}
+  git_url: https://github.com/conda/conda
+  git_tag: {{ sha1 }}
 
 build:
-  number: 1
+  number: 0
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
