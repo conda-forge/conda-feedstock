@@ -1,14 +1,15 @@
 {% set name = "conda" %}
-{% set version = "4.3.26" %}
-{% set sha1 = "f0032e064a8122ebdb4a0d7885a0b61a053e58f5" %}
+{% set version = "4.3.27" %}
+{% set sha256 = "7de3c3fdb9cc0418bed860dd29d03cde211abafdbc236ddeb223b0c253c1dd72" %}
 
 package:
   name: conda
   version: {{ version }}
 
 source:
-  git_url: https://github.com/conda/conda
-  git_tag: {{ sha1 }}
+  fn: conda-{{ version }}.tar.gz
+  url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
+  sha256: {{ sha256 }}
 
 build:
   number: 0
