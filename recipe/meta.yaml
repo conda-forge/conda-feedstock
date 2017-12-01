@@ -1,24 +1,16 @@
-{% set name = "conda" %}
-{% set version = "4.3.30" %}
-{% set sha256 = "67ad83784503eefdf5380254226b1a515c7de14c88aacaaed31d9489a15d243d" %}
-
 package:
   name: conda
-  version: {{ version }}
+  version: 4.4.0rc2
 
 source:
-  fn: conda-{{ version }}.tar.gz
-  url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  git_url: https://github.com/conda/conda.git
+  git_rev: 04d242a8e551fc8a6faa7b47d877810b2a588f4d  # 4.4.0rc2
 
 build:
   number: 0
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
-  entry_points:
-    - conda = conda.cli:main
-    - conda-env = conda_env.cli.main:main
   always_include_files:
     - bin/conda                            # [unix]
     - bin/activate                         # [unix]
@@ -27,10 +19,16 @@ build:
     - Scripts/activate                     # [win]
     - Scripts/deactivate.bat               # [win]
     - Scripts/deactivate                   # [win]
+  entry_points:
+    - conda = conda.cli:main
+    - conda-env = conda_env.cli.main:main
 
 requirements:
   host:
     - python
+    - m2-base              [win]
+    - m2-filesystem        [win]
+    - m2-git               [win]
     - pycosat
     - pyopenssl
     - requests
@@ -38,20 +36,29 @@ requirements:
   run:
     - python
     - conda-env >=2.6
-    - enum34                 # [py<34]
-    - menuinst               # [win]
-    - pycosat >=0.6.1
+    - enum34               [py<34]
+    - futures              [py<34]
+    - menuinst             [win]
+    - pycosat >=0.6.3
     - pyopenssl >=16.2.0
-    - requests >=2.12.4
+    - requests >=2.14.2,<3
     - ruamel_yaml >=0.11.14
+  run_constrained:
+    - conda-build >=2.1
+    - cytoolz >=0.8.1
 
 test:
+  requires:
+    - mock
+    - pytest
+    - pytest-cov
   imports:
     - conda
-
+    - conda.exports
+    - conda_env
   commands:
     # Check version via import.
-    - python -c "from __future__ import print_function; import conda; print(conda.__version__)"
+    - python -c "import conda; print(conda.__version__)"
 
     # Show where the conda commands are.
     - which conda                  # [unix]
@@ -61,11 +68,16 @@ test:
 
     # Run some simple conda commands.
     - conda --version
-    - conda info
+    - conda info --all
     - conda env --help
 
+    # # Conda's unit tests
+    # can't do this because SRC_DIR gets removed after the build step?
+    # - py.test -m "not integration and not installed" $SRC_DIR/tests $SRC_DIR/conda    # [unix]
+    # - py.test -m "not integration and not installed" %SRC_DIR%/tests %SRC_DIR%/conda  # [win]
+
 about:
-  home: http://conda.pydata.org/
+  home: https://conda.io
   license: BSD 3-Clause
   license_file: LICENSE.txt
   summary: OS-agnostic, system-level binary package and environment manager.
@@ -75,7 +87,7 @@ about:
     and their dependencies and switching easily between them. It works on
     Linux, OS X and Windows, and was created for Python programs but can
     package and distribute any software.
-  doc_url: http://conda.pydata.org/docs/
+  doc_url: https://conda.io/docs/
   dev_url: https://github.com/conda/conda
 
 extra:
