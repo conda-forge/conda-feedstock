@@ -1,10 +1,10 @@
 package:
   name: conda
-  version: 4.4.2
+  version: 4.4.3
 
 source:
   git_url: https://github.com/conda/conda.git
-  git_rev: 6c5d2bab095f9a2a4f846515800dbcf38f2fac39  # 4.4.2
+  git_rev: 2060458e0c546a3c70fa041e738cb73b41c4b0d3  # 4.4.3
 
 build:
   number: 0
