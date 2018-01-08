@@ -2,11 +2,11 @@
 
 package:
   name: conda
-  version: 4.4.6
+  version: 4.4.7
 
 source:
   git_url: https://github.com/conda/conda.git
-  git_rev: a4c4feae404b2b378e106bd25f62cc8be15c768f  # 4.4.6
+  git_rev: ee888e9d6a7c76c7dd431956dbb522e1088e4b44  # 4.4.7
 
 build:
   number: 0
@@ -44,6 +44,7 @@ requirements:
   run_constrained:
     - conda-build >=2.1
     - cytoolz >=0.8.1
+    - setuptools >=31.0.1
 
 test:
   source_files:
