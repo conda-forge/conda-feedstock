@@ -13,5 +13,6 @@ FOR /F "delims=" %%i IN ('cygpath.exe -u "%STDLIB_DIR%"') DO set "STDLIB_DIR=%%i
 set MSYSTEM=MINGW%ARCH%
 set MSYS2_PATH_TYPE=inherit
 set CHERE_INVOKING=1
+echo %PKG_VERSION% > conda\.version
 bash -lc ". utils/functions.sh && install_conda_full"
 if errorlevel 1 exit 1
