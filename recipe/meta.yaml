@@ -55,8 +55,9 @@ test:
     - conftest.py
     - tests
     - setup.cfg
-    - test_conda.bat
-    - test_conda.sh
+  files:
+    - test_conda.bat   # [win]
+    - test_conda.sh    # [unix]
   requires:
     - mock
     - pytest
