@@ -57,7 +57,6 @@ test:
     - setup.cfg
   files:
     - test_conda.bat   # [win]
-    - test_conda.sh    # [unix]
   requires:
     - mock
     - pytest
@@ -79,6 +78,9 @@ test:
     - conda activate .\built-conda-test-env
     - echo %CONDA_PREFIX%
     - IF NOT "%CONDA_PREFIX%"=="%CD%\built-conda-test-env" EXIT /B 1
+    - where conda
+    - where conda-env
+    - conda env --help
 {% else %}
     - . $PREFIX/etc/profile.d/conda.sh
     - conda activate base
@@ -92,6 +94,10 @@ test:
     - conda activate ./built-conda-test-env
     - echo $CONDA_PREFIX
     - '[ "$CONDA_PREFIX" = "$PWD/built-conda-test-env" ] || exit 1'
+    - python -c "from __future__ import print_function; import conda; print(conda.__version__)"
+    - which conda
+    - which conda-env
+    - conda env --help
 {% endif %}
 
 
