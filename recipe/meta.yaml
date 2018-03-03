@@ -55,6 +55,8 @@ test:
     - conftest.py
     - tests
     - setup.cfg
+    - test_conda.bat
+    - test_conda.sh
   requires:
     - mock
     - pytest
