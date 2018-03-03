@@ -1,14 +1,15 @@
 {% set name = "conda" %}
-{% set version = "4.3.34" %}
-{% set checksum = "5293ee8c881e175eb627732f488280a662068c50499ffc1f23392cc0a4075ae8" %}
+{% set version = "4.4.11" %}
+{% set checksum = "a93507e4a1592681c8b031acfc926db9c7eed08bbcf3a31c7bcf1a53b2108de9" %}
+{% set on_win = SUBDIR in ('win-64', 'win-32') %}
 
 package:
-  name: conda
+  name: {{ name }}
   version: {{ version }}
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
+  url: https://github.com/{{ name }}/{{ name }}/archive/{{ version }}.tar.gz
   sha256: {{ checksum }}
 
 build:
@@ -16,9 +17,6 @@ build:
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
-  entry_points:
-    - conda = conda.cli:main
-    - conda-env = conda_env.cli.main:main
   always_include_files:
     - bin/conda                            # [unix]
     - bin/activate                         # [unix]
@@ -27,30 +25,75 @@ build:
     - Scripts/activate                     # [win]
     - Scripts/deactivate.bat               # [win]
     - Scripts/deactivate                   # [win]
+  entry_points:
+    - conda = conda.cli:main
+    - conda-env = conda_env.cli.main:main
 
 requirements:
   build:
     - python
+    - m2-base              # [win]
+    - m2-filesystem        # [win]
+    - m2-git               # [win]
   run:
     - python
     - conda-env >=2.6
-    - enum34                 # [py<34]
-    - menuinst               # [win]
-    - pycosat >=0.6.1
+    - enum34               # [py<34]
+    - futures              # [py<34]
+    - menuinst             # [win]
+    - pycosat >=0.6.3
     - pyopenssl >=16.2.0
-    - requests >=2.12.4
+    - requests >=2.12.4,<3
     - ruamel_yaml >=0.11.14
+  run_constrained:
+    - conda-build >=2.1
+    - cytoolz >=0.8.1
+    - setuptools >=31.0.1
 
 test:
-  files:
-    - test_conda.bat                # [win]
-    - test_conda.sh                 # [unix]
-
+  source_files:
+    - conftest.py
+    - tests
+    - setup.cfg
+  requires:
+    - mock
+    - pytest
+    - pexpect
+    - responses
   imports:
     - conda
+    - conda_env
+  commands:
+{% if on_win %}
+    - conda activate base
+    - FOR /F "delims=" %%i IN ('python -c "import sys; print(sys.version_info[0])"') DO set "PYTHON_MAJOR_VERSION=%%i"
+    - set TEST_PLATFORM=win
+    - FOR /F "delims=" %%i IN ('python -c "import random as r; print(r.randint(0,4294967296))"') DO set "PYTHONHASHSEED=%%i"
+    - set
+    - conda info
+    - py.test tests -m "not integration and not installed" -vv
+    - conda create -y -p .\built-conda-test-env
+    - conda activate .\built-conda-test-env
+    - echo %CONDA_PREFIX%
+    - IF NOT "%CONDA_PREFIX%"=="%CD%\built-conda-test-env" EXIT /B 1
+{% else %}
+    - . $PREFIX/etc/profile.d/conda.sh
+    - conda activate base
+    - export PYTHON_MAJOR_VERSION=$(python -c "import sys; print(sys.version_info[0])")
+    - export TEST_PLATFORM=$(python -c "import sys; print('win' if sys.platform.startswith('win') else 'unix')")
+    - export PYTHONHASHSEED=$(python -c "import random as r; print(r.randint(0,4294967296))") && echo "PYTHONHASHSEED=$PYTHONHASHSEED"
+    - env | sort
+    - conda info
+    - py.test tests -m "not integration and not installed" -vv || true
+    - conda create -y -p ./built-conda-test-env
+    - conda activate ./built-conda-test-env
+    - echo $CONDA_PREFIX
+    - '[ "$CONDA_PREFIX" = "$PWD/built-conda-test-env" ] || exit 1'
+{% endif %}
+
 
 about:
-  home: http://conda.pydata.org/
+  home: https://conda.io
   license: BSD 3-Clause
   license_file: LICENSE.txt
   summary: OS-agnostic, system-level binary package and environment manager.
@@ -60,7 +103,7 @@ about:
     and their dependencies and switching easily between them. It works on
     Linux, OS X and Windows, and was created for Python programs but can
     package and distribute any software.
-  doc_url: http://conda.pydata.org/docs/
+  doc_url: https://conda.io/docs/
   dev_url: https://github.com/conda/conda
 
 extra:
