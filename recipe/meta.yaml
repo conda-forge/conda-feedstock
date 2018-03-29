@@ -92,6 +92,14 @@ test:
     - env | sort
     - which -a conda
     - which -a conda-env
+    # Some debugging stuff...
+    - head -n1 "$_CONDA_EXE"
+    - which -a python
+    - python -c "import conda; print(conda.__version__)"
+    - python -m conda --version
+    - python "$_CONDA_EXE"
+    - $(sed "s/^#!\s*//;q" "$_CONDA_EXE") -c "import conda; print(conda.__version__)"
+    - $(sed "s/^#!\s*//;q" "$_CONDA_EXE") -m conda --version
     - '[[ $(conda --version) == "conda {{ version }}" ]] || exit 1'
     - conda info
     - conda activate base
