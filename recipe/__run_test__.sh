@@ -15,6 +15,8 @@ mkdir "$CONDA_PKGS_DIRS"
 source $PREFIX/bin/activate $PREFIX
 
 # Run conda tests.
+env | sort
+ls -al
 source ./test_conda.sh
 
 # Deactivate the built conda when done.
