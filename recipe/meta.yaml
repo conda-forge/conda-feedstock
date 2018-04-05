@@ -1,6 +1,6 @@
 {% set name = "conda" %}
-{% set version = "4.4.11" %}
-{% set checksum = "a93507e4a1592681c8b031acfc926db9c7eed08bbcf3a31c7bcf1a53b2108de9" %}
+{% set version = "4.5.0" %}
+{% set checksum = "a4210c8d027885d7a5f998c3d58c11882ae7606526f2b555bdab5e5db84f5249" %}
 {% set on_win = SUBDIR in ('win-64', 'win-32') %}
 
 package:
