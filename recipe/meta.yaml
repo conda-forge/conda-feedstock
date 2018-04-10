@@ -48,7 +48,7 @@ test:
     - conda
 
 about:
-  home: http://conda.pydata.org/
+  home: https://conda.io
   license: BSD 3-Clause
   license_file: LICENSE.txt
   summary: OS-agnostic, system-level binary package and environment manager.
@@ -58,7 +58,7 @@ about:
     and their dependencies and switching easily between them. It works on
     Linux, OS X and Windows, and was created for Python programs but can
     package and distribute any software.
-  doc_url: http://conda.pydata.org/docs/
+  doc_url: https://conda.io/docs/
   dev_url: https://github.com/conda/conda
 
 extra:
