@@ -1,13 +1,11 @@
-{% set name = "conda" %}
-{% set version = "4.3.34" %}
-{% set checksum = "5293ee8c881e175eb627732f488280a662068c50499ffc1f23392cc0a4075ae8" %}
+{% set version = "4.5.0" %}
+{% set checksum = "a4210c8d027885d7a5f998c3d58c11882ae7606526f2b555bdab5e5db84f5249" %}
 
 package:
   name: conda
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
   sha256: {{ checksum }}
 
@@ -31,14 +29,18 @@ build:
 requirements:
   build:
     - python
+    - m2-base              # [win]
+    - m2-filesystem        # [win]
+    - m2-git               # [win]
   run:
     - python
     - conda-env >=2.6
     - enum34                 # [py<34]
+    - futures                # [py<34]
     - menuinst               # [win]
-    - pycosat >=0.6.1
+    - pycosat >=0.6.3
     - pyopenssl >=16.2.0
-    - requests >=2.12.4
+    - requests >=2.12.4,<3
     - ruamel_yaml >=0.11.14
 
 test:
@@ -50,7 +52,7 @@ test:
     - conda
 
 about:
-  home: http://conda.pydata.org/
+  home: https://conda.io
   license: BSD 3-Clause
   license_file: LICENSE.txt
   summary: OS-agnostic, system-level binary package and environment manager.
@@ -60,7 +62,7 @@ about:
     and their dependencies and switching easily between them. It works on
     Linux, OS X and Windows, and was created for Python programs but can
     package and distribute any software.
-  doc_url: http://conda.pydata.org/docs/
+  doc_url: https://conda.io/docs/
   dev_url: https://github.com/conda/conda
 
 extra:
