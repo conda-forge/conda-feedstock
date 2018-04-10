@@ -29,14 +29,18 @@ build:
 requirements:
   build:
     - python
+    - m2-base              # [win]
+    - m2-filesystem        # [win]
+    - m2-git               # [win]
   run:
     - python
     - conda-env >=2.6
     - enum34                 # [py<34]
+    - futures                # [py<34]
     - menuinst               # [win]
-    - pycosat >=0.6.1
+    - pycosat >=0.6.3
     - pyopenssl >=16.2.0
-    - requests >=2.12.4
+    - requests >=2.12.4,<3
     - ruamel_yaml >=0.11.14
 
 test:
