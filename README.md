@@ -1,7 +1,7 @@
 About conda
 ===========
 
-Home: http://conda.pydata.org/
+Home: https://conda.io
 
 Package license: BSD 3-Clause
 
