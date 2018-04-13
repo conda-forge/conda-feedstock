@@ -2,12 +2,12 @@
 
 package:
   name: conda
-  version: '4.5.0'
+  version: '4.5.1'
 
 source:
   fn: conda-4.5.0.tar.gz
-  url: https://github.com/conda/conda/archive/4.5.0.tar.gz
-  sha256: a4210c8d027885d7a5f998c3d58c11882ae7606526f2b555bdab5e5db84f5249
+  url: https://github.com/conda/conda/archive/4.5.1.tar.gz
+  sha256: cab1044f2ae8c2b14a120a754dc59455cc23bf2fa3ee29f18eb2a49fd46a0697
 
 build:
   number: 0
