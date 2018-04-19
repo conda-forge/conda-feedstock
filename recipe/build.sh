@@ -1,4 +1,6 @@
 #!/bin/bash
 
 echo $PKG_VERSION > conda/.version
-. utils/functions.sh && install_conda_full
+python setup.py install --single-version-externally-managed --record record.txt
+rm -rf "$SP_DIR/conda/shell/*.exe"
+python -m conda init --install
