@@ -19,14 +19,16 @@ package and distribute any software.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/conda-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/conda-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/conda-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/conda-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/conda-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/conda-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/conda-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/conda-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/conda-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/conda-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/conda-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/conda-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/conda/badges/version.svg)](https://anaconda.org/conda-forge/conda)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/conda/badges/downloads.svg)](https://anaconda.org/conda-forge/conda)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-conda-green.svg)](https://anaconda.org/conda-forge/conda) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/conda.svg)](https://anaconda.org/conda-forge/conda) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/conda.svg)](https://anaconda.org/conda-forge/conda) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/conda.svg)](https://anaconda.org/conda-forge/conda) |
 
 Installing conda
 ================
