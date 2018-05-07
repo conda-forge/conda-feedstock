@@ -79,7 +79,8 @@ test:
     - echo %CONDA_PREFIX%
     - IF NOT "%CONDA_PREFIX%"=="%CD%\built-conda-test-env" EXIT /B 1
     - CALL conda.bat deactivate || exit /b
-    - py.test tests -m "not integration and not installed" -vv || echo failed
+    - py.test tests -m "not integration and not installed" -vv
+    - echo allow failures
 {% else %}
     - unset CONDA_SHLVL
     - eval "$(python -m conda shell.bash hook)"
