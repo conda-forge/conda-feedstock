@@ -1,5 +1,5 @@
-{% set version = "4.5.3" %}
-{% set checksum = "cc74e3fbd875eaf21fb6b6148ffe625a6cbe2bc82275f87f238a0ce1369c363e" %}
+{% set version = "4.5.4" %}
+{% set checksum = "5d5b7868dabfa98d65b978aeebe932cee34afcecd2a27136759ff9761023d1c8" %}
 
 package:
   name: conda
@@ -36,12 +36,16 @@ requirements:
     - python
     - conda-env >=2.6
     - enum34                 # [py<34]
-    - futures                # [py<34]
+    - futures >=3.0.0        # [py<34]
     - menuinst               # [win]
     - pycosat >=0.6.3
     - pyopenssl >=16.2.0
     - requests >=2.12.4,<3
     - ruamel_yaml >=0.11.14
+  run_constrained:
+    - conda-build >=2.1
+    - cytoolz >=0.8.1
+    - setuptools >=36.4
 
 test:
   files:
