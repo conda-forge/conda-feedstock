@@ -26,7 +26,7 @@ def rm_rf(path, config=None):
             for line in out_stream.getvalue().splitlines():
                 if line.startswith(b'Deleted file - '):
                     num_deleted_file_lines += 1
-                else
+                else:
                     print(line)
             if num_deleted_file_lines > 0:
                 print('>>>>>> "Deleted file - " lines:', num_deleted_file_lines, file=sys.stderr)
