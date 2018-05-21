@@ -29,7 +29,7 @@ if errorlevel 1 exit 1
 
 :: Deactivate the built conda when done.
 :: Not necessary, but a good test.
-conda deactivate
+call conda deactivate
 if errorlevel 1 exit 1
 
 endlocal
