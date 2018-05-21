@@ -1,6 +1,5 @@
 from __future__ import print_function
 
-from io import BytesIO
 import os
 import subprocess
 import sys
@@ -19,18 +18,7 @@ def rm_rf(path, config=None):
                 return _check_call(popen_args, *args, **kwargs)
             popen_args = popen_args.replace(rd_str, 'del /F /S /Q')
             print('>>>>>> running monkeypatched call:', popen_args, file=sys.stderr)
-            out_stream = BytesIO()
-            kwargs['stdout'] = out_stream
-            ret = _check_call(popen_args, *args, **kwargs)
-            num_deleted_file_lines = 0
-            for line in out_stream.getvalue().splitlines():
-                if line.startswith(b'Deleted file - '):
-                    num_deleted_file_lines += 1
-                else:
-                    print(line)
-            if num_deleted_file_lines > 0:
-                print('>>>>>> "Deleted file - " lines:', num_deleted_file_lines, file=sys.stderr)
-            return ret
+            return _check_call(popen_args, *args, **kwargs)
         try:
             subprocess.check_call = check_call
             _rm_rf(path, config=config)
