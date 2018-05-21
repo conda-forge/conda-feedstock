@@ -1,6 +1,7 @@
 from __future__ import print_function
 
 from os.path import exists
+import sys
 from time import sleep
 
 from conda.common.io import captured
