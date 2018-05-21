@@ -1,6 +1,8 @@
 from __future__ import print_function
 
+from functools import partial
 from os.path import exists
+import subprocess
 import sys
 from time import sleep
 
@@ -13,10 +15,16 @@ _rm_rf = conda_build.utils.rm_rf
 
 def rm_rf(path, config=None):
     with captured() as c:
+        check_call = subprocess.check_call
         try:
+            subprocess.check_call = partial(
+                check_call, stdout=sys.stdout, stderr=sys.stderr, close_fds=False,
+            )
             _rm_rf(path, config=config)
         except OSError:
             pass
+        finally:
+            subprocess.check_call = check_call
     for output, stream in ((c.stdout, sys.stdout), (c.stderr, sys.stderr)):
         if output:
             print(
