@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+from io import BytesIO
 import os
 import subprocess
 import sys
@@ -18,7 +19,12 @@ def rm_rf(path, config=None):
                 return _check_call(popen_args, *args, **kwargs)
             popen_args = popen_args.replace(rd_str, 'del /F /S /Q')
             print('>>>>>> running monkeypatched call:', popen_args, file=sys.stderr)
-            return _check_call(popen_args, *args, **kwargs)
+            out_stream = BytesIO()
+            kwargs['stdout'] = out_stream
+            ret = _check_call(popen_args, *args, **kwargs)
+            for line in out_stream.getvalue().splitlines():
+                print(line)
+            return ret
         try:
             subprocess.check_call = check_call
             _rm_rf(path, config=config)
