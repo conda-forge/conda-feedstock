@@ -20,7 +20,7 @@ mkdir %CONDA_PKGS_DIRS%
 if errorlevel 1 exit 1
 
 :: Activate the built conda.
-conda activate base
+call conda activate base
 if errorlevel 1 exit 1
 
 :: Run conda tests.
@@ -29,7 +29,7 @@ if errorlevel 1 exit 1
 
 :: Deactivate the built conda when done.
 :: Not necessary, but a good test.
-conda deactivate
+call conda deactivate
 if errorlevel 1 exit 1
 
 endlocal
