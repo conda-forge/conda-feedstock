@@ -60,6 +60,10 @@ test:
     - py.test
 
   requires:
+    - mock
+    - pexpect
+    - pytest-timeout
+    - responses
     - pytest
 
   imports:
