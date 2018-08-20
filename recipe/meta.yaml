@@ -10,7 +10,7 @@ source:
   sha256: {{ checksum }}
 
 build:
-  number: 0
+  number: 1
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -41,8 +41,8 @@ requirements:
     - pycosat >=0.6.3
     - pyopenssl >=16.2.0
     - requests >=2.12.4,<3
-    - ruamel_yaml >=0.11.14  # [py>27]
-    - ruamel_yaml >=0.11.14,<0.15.39|>=0.15.43  # [py<=27]
+    - ruamel_yaml >=0.11.14,<0.15.55  # [py>27]
+    - ruamel_yaml >=0.11.14,<0.15.39|>=0.15.43,<0.15.55  # [py<=27]
   run_constrained:
     - conda-build >=2.1
     - cytoolz >=0.8.1
