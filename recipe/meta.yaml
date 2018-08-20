@@ -53,6 +53,15 @@ test:
     - test_conda.bat                # [win]
     - test_conda.sh                 # [unix]
 
+  source_files:
+    - tests/*
+
+  commands:
+    - py.test
+
+  requires:
+    - pytest
+
   imports:
     - conda
 
