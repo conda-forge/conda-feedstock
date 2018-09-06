@@ -10,7 +10,7 @@ source:
   # git_rev: 63ed862e35bdfe11a5e0b02b592528099a621ae7
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
-  sha256: 3fa0021590db4e6241ecbdaa900d04655f9054faf350d067866e4e85e8fd1b92
+  sha256: 6272ec60ef9f53b055b6280e371cab23c743905dbdc7bb2ab728d83ce789d61c
 
 build:
   number: 0
@@ -26,13 +26,21 @@ build:
     - Scripts/deactivate           # [win]
 
 requirements:
-  host:
+  build:
     - python
+    - setuptools >=31.0.1
+    - enum34                [py<34]
+    - futures               [py<34]
+    - menuinst >=1.4.11,<2  [win]
+    - pycosat >=0.6.3
+    - pyopenssl >=16.2.0
+    - requests >=2.18.4,<3
+    - ruamel_yaml >=0.11.14,<0.16
   run:
     - python
-    - enum34                       # [py<34]
-    - futures >=3.0.0              # [py<34]
-    - menuinst >=1.4.11,<2         # [win]
+    - enum34                [py<34]
+    - futures >=3.0.0       [py<34]
+    - menuinst >=1.4.11,<2  [win]
     - pycosat >=0.6.3
     - pyopenssl >=16.2.0
     - requests >=2.18.4,<3
@@ -42,7 +50,6 @@ requirements:
     - conda-env >=2.6
     - cytoolz >=0.8.1
     - setuptools >=31.0.1
-
 
 test:
   source_files:
