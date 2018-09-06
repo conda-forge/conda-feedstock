@@ -1,5 +1,5 @@
 {% set on_win = SUBDIR in ('win-64', 'win-32') %}
-{% set version = '4.6.0a2' %}
+{% set version = '4.6.0b0' %}
 
 package:
   name: conda
@@ -10,7 +10,7 @@ source:
   # git_rev: 63ed862e35bdfe11a5e0b02b592528099a621ae7
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
-  sha256: efd538a58a128f140ae213b6d02944f1c69fcbe8cd9b6acd1e2e11ab5d6e3147
+  sha256: 3fa0021590db4e6241ecbdaa900d04655f9054faf350d067866e4e85e8fd1b92
 
 build:
   number: 0
@@ -26,30 +26,23 @@ build:
     - Scripts/deactivate           # [win]
 
 requirements:
-  build:
+  host:
     - python
-    - setuptools
-    - enum34                       # [py<34]
-    - futures >=3                  # [py<34]
-    - menuinst >=1.4.11,<2         # [win]
-    - pycosat >=0.6.3
-    - pyopenssl >=16.2.0
-    - requests >=2.18.4,<3
-    - ruamel_yaml >=0.11.14
   run:
     - python
-    - conda-env >=2.6
     - enum34                       # [py<34]
-    - futures >=3                  # [py<34]
+    - futures >=3.0.0              # [py<34]
     - menuinst >=1.4.11,<2         # [win]
     - pycosat >=0.6.3
     - pyopenssl >=16.2.0
     - requests >=2.18.4,<3
-    - ruamel_yaml >=0.11.14
+    - ruamel_yaml >=0.11.14,<0.16
   run_constrained:
     - conda-build >=3
+    - conda-env >=2.6
     - cytoolz >=0.8.1
     - setuptools >=31.0.1
+
 
 test:
   source_files:
