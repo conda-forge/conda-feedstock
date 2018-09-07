@@ -29,6 +29,7 @@ requirements:
   host:
     - python
     - enum34                       # [py<34]
+    - futures >=3.0.0              # [py<34]
     - menuinst >=1.4.11,<2         # [win]
     - pip
     - ruamel_yaml >=0.11.14,<0.16
@@ -87,7 +88,7 @@ test:
     - echo %CONDA_PREFIX%
     - IF NOT "%CONDA_PREFIX%"=="%CD%\built-conda-test-env" EXIT /B 1
     - CALL conda.bat deactivate || exit /b
-    - py.test tests -m "not integration and not installed" -vv || echo allow failures
+    # - py.test tests -m "not integration and not installed" -vv || echo allow failures
     - echo allow failures
 {% else %}
     - unset CONDA_SHLVL
