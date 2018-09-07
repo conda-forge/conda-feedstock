@@ -28,6 +28,7 @@ build:
 requirements:
   host:
     - python
+    - setuptools >=31.0.1
   # build:
   #   - python
   #   - setuptools >=31.0.1
