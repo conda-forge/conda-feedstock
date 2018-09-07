@@ -28,6 +28,8 @@ build:
 requirements:
   host:
     - python
+    - enum34                       # [py<34]
+    - menuinst >=1.4.11,<2         # [win]
     - ruamel_yaml >=0.11.14,<0.16
     - setuptools >=31.0.1
   # build:
