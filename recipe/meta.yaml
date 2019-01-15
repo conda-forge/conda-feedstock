@@ -14,9 +14,10 @@ build:
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
-  entry_points:
-    - conda = conda.cli:main
-    - conda-env = conda_env.cli.main:main
+
+  # entry_points:
+  #   - conda = conda.cli:main
+  #   - conda-env = conda_env.cli.main:main
   always_include_files:
     - bin/conda                            # [unix]
     - bin/activate                         # [unix]
@@ -27,24 +28,27 @@ build:
     - Scripts/deactivate                   # [win]
 
 requirements:
-  build:
+  host:
     - python
-    - m2-base              # [win]
-    - m2-filesystem        # [win]
-    - m2-git               # [win]
+    - enum34                       # [py<34]
+    - futures >=3.0.0              # [py<34]
+    - menuinst >=1.4.11,<2         # [win]
+    - pip
+    - ruamel_yaml >=0.11.14,<0.16
+    - setuptools >=31.0.1
   run:
     - python
-    - conda-env >=2.6
-    - enum34                 # [py<34]
-    - futures >=3.0.0        # [py<34]
-    - menuinst               # [win]
+    - enum34                       # [py<34]
+    - futures >=3.0.0              # [py<34]
+    - menuinst >=1.4.11,<2         # [win]
     - pycosat >=0.6.3
     - pyopenssl >=16.2.0
-    - requests >=2.12.4,<3
-    - ruamel_yaml >=0.11.14  # [py>27]
-    - ruamel_yaml >=0.11.14,<0.15.39|>=0.15.43  # [py<=27]
+    - requests >=2.18.4,<3
+    - ruamel_yaml >=0.11.14,<0.16
+    - setuptools >=31.0.1
   run_constrained:
-    - conda-build >=2.1
+    - conda-build >=3
+    - conda-env >=2.6
     - cytoolz >=0.8.1
     - setuptools >=31.0.1
 
