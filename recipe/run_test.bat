@@ -3,7 +3,7 @@ setlocal
 verify >nul
 
 :: Deactivate external conda.
-call %PREFIX%\Scripts\deactivate.bat
+call %PREFIX%\condabin\deactivate.bat
 if errorlevel 1 exit 1
 
 :: Configure special conda directories and files.

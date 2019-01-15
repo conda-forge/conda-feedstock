@@ -24,7 +24,6 @@ build:
     - bin/deactivate                       # [unix]
     - Scripts/activate.bat                 # [win]
     - Scripts/activate                     # [win]
-    - Scripts/deactivate.bat               # [win]
     - Scripts/deactivate                   # [win]
 
 requirements:
