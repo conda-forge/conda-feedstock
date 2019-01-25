@@ -59,6 +59,9 @@ test:
   imports:
     - conda
 
+  downstreams:
+    - conda-smithy
+
 about:
   home: https://conda.io
   license: BSD 3-Clause
