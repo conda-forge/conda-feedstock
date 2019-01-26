@@ -1,5 +1,5 @@
-{% set version = "4.6.0" %}
-{% set checksum = "2e1a1ff4a8ae98658b79b7ade4594b14f6d63eb541682bd8dc0a33ed4d7616eb" %}
+{% set version = "4.6.1" %}
+{% set checksum = "98ebda0d5cb2ffefe83ea42cdb2873e460c9380736dc1a0179a72c1490cdc3c8" %}
 
 package:
   name: conda
@@ -10,7 +10,7 @@ source:
   sha256: {{ checksum }}
 
 build:
-  number: 1000
+  number: 0
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -58,6 +58,9 @@ test:
 
   imports:
     - conda
+
+  downstreams:
+    - conda-smithy
 
 about:
   home: https://conda.io
