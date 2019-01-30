@@ -1,5 +1,5 @@
-{% set version = "4.6.1" %}
-{% set checksum = "98ebda0d5cb2ffefe83ea42cdb2873e460c9380736dc1a0179a72c1490cdc3c8" %}
+{% set version = "4.6.2" %}
+{% set checksum = "41f53c9a9869169b64a20beb1ad3de2edb4b3f5f967a09e5c7b35df86f5dff7c" %}
 
 package:
   name: conda
@@ -60,7 +60,7 @@ test:
     - conda
 
   downstreams:
-    - conda-smithy
+    - conda-smithy  # [py3k]
 
 about:
   home: https://conda.io
