@@ -60,6 +60,9 @@ test:
     - pytest
     - pexpect
     - responses
+    - m2-filesystem  # [win]
+    - m2-bash        # [win]
+    - m2-base        # [win]
   imports:
     - conda
     - conda_env
@@ -69,15 +72,23 @@ test:
     - CALL %PREFIX%\condabin\conda_hook.bat
     - CALL conda.bat activate base
     - FOR /F "delims=" %%i IN ('python -c "import sys; print(sys.version_info[0])"') DO set "PYTHON_MAJOR_VERSION=%%i"
-    - set TEST_PLATFORM=win
+    - SET TEST_PLATFORM=win
     - FOR /F "delims=" %%i IN ('python -c "import random as r; print(r.randint(0,4294967296))"') DO set "PYTHONHASHSEED=%%i"
-    - set
-    - conda info || exit /b
-    - conda create -y -p .\built-conda-test-env || exit /b
-    - CALL conda.bat activate .\built-conda-test-env || exit /b
+    # - SET
+    - where conda
+    - CALL conda info
+    - CALL conda create -y -p .\built-conda-test-env
+    - CALL conda.bat activate .\built-conda-test-env
     - echo %CONDA_PREFIX%
     - IF NOT "%CONDA_PREFIX%"=="%CD%\built-conda-test-env" EXIT /B 1
-    - CALL conda.bat deactivate || exit /b
+    - CALL conda.bat deactivate
+    - SET MSYSTEM=MINGW%ARCH%
+    - SET MSYS2_PATH_TYPE=inherit
+    - SET CHERE_INVOKING=1
+    - bash -lc "echo $PWD"
+    - bash -lc "ls -l"
+    - FOR /F "delims=" %%i IN ('cygpath.exe -u "%PREFIX%"') DO set "PREFIXP=%%i"
+    - bash -lc "source %PREFIXP%/Scripts/activate"
     # - py.test tests -m "not integration and not installed" -vv || echo allow failures
     - echo allow failures
 {% else %}
