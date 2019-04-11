@@ -26,6 +26,11 @@ build:
     - Scripts/deactivate           # [win]
 
 requirements:
+  build:
+    - m2-filesystem                # [win]
+    - m2-bash                      # [win]
+    - m2-base                      # [win]
+
   host:
     - python
     - enum34                       # [py<34]
