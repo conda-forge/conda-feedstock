@@ -6,8 +6,6 @@ package:
   version: {{ version }}
 
 source:
-  # git_url: https://github.com/conda/conda.git
-  # git_rev: 63ed862e35bdfe11a5e0b02b592528099a621ae7
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
   sha256: 095c3b56ec1cc72c368a3a49d858c0eaa24f0d3a7e813e42f065bdb91615dbe9
@@ -71,6 +69,11 @@ test:
   imports:
     - conda
     - conda_env
+  files:
+    - test_conda.bat                # [win]
+    - test_conda.sh                 # [unix]
+  downstreams:
+    - conda-smithy  # [py3k]
   commands:
 {% if on_win %}
     - SET CONDA_SHLVL=
@@ -137,3 +140,4 @@ extra:
     - patricksnape
     - pelson
     - scopatz
+    - mbargull
