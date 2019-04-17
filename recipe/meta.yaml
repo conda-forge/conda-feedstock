@@ -1,4 +1,4 @@
-{% set version = "4.6.13" %}
+{% set version = "4.6.14" %}
 
 package:
   name: conda
@@ -7,7 +7,7 @@ package:
 source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
-  sha256: dc6963a8674401b5daf1c7f23ffa0235a7ffcd62a25c55780dc85ebef73c8d2f
+  sha256: 6e65665406e29256c96199ed17b767c0a3ab449df60d09d3185dbf9c30bb2d45
 
 build:
   number: 0
@@ -62,7 +62,7 @@ test:
     - pytest
     - pexpect
     - responses
-    - conda-build
+    # - conda-build  # needed to run the test suite, but we're not doing that right now.
     - m2-filesystem  # [win]
     - m2-bash        # [win]
     - m2-base        # [win]
