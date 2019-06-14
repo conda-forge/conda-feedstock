@@ -1,4 +1,4 @@
-{% set version = "4.7.1" %}
+{% set version = "4.7.2" %}
 
 package:
   name: conda
@@ -7,7 +7,7 @@ package:
 source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
-  sha256: 8e167cf258da04077410fd5212860d320089b1c936694a4ded8bf468ffafabc6
+  sha256: c4737aadedd177a840c34c119381043ec4c8fdce3997661720d79ea90e2294b9
 
 build:
   number: 0
@@ -36,7 +36,11 @@ requirements:
     - pip
     - ruamel_yaml >=0.11.14,<0.16
     - setuptools >=31.0.1
+<<<<<<< Updated upstream
     - conda-package-handling >=1.1
+=======
+    - conda-package-handling >=1.3.0
+>>>>>>> Stashed changes
   run:
     - python
     - enum34                       # [py<34]
@@ -47,7 +51,11 @@ requirements:
     - requests >=2.18.4,<3
     - ruamel_yaml >=0.11.14,<0.16
     - setuptools >=31.0.1
+<<<<<<< Updated upstream
     - conda-package-handling >=1.1
+=======
+    - conda-package-handling >=1.3.0
+>>>>>>> Stashed changes
   run_constrained:
     - conda-build >=3
     - conda-env >=2.6
