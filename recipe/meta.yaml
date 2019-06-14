@@ -1,5 +1,5 @@
 {% set on_win = SUBDIR in ('win-64', 'win-32') %}
-{% set version = "4.6.14" %}
+{% set version = "4.7.3" %}
 
 package:
   name: conda
@@ -8,7 +8,7 @@ package:
 source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
-  sha256: 6e65665406e29256c96199ed17b767c0a3ab449df60d09d3185dbf9c30bb2d45
+  sha256: 8099fbaf13d9d1ceffb11db466b32f0a621fc07c6af2dd56565ffc9174c21b1c
 
 build:
   number: 0
