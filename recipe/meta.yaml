@@ -1,4 +1,4 @@
-{% set version = "4.7.8" %}
+{% set version = "4.7.9" %}
 
 package:
   name: conda
