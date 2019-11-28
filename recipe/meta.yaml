@@ -75,7 +75,7 @@ test:
     - test_conda.bat                # [win]
     - test_conda.sh                 # [unix]
   downstreams:
-    - conda-smithy  # [py3k]
+    - conda-smithy  # [py>=30 and py!=38]
   commands:
 {% if on_win %}
     - SET CONDA_SHLVL=
