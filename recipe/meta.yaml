@@ -11,7 +11,7 @@ source:
   sha256: a1756b697af8416b75d1ebdeabf10f1f45fdd3955963af56b6acf3f745edb0a2
 
 build:
-  number: 0
+  number: 1
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -53,7 +53,6 @@ requirements:
     - conda-build >=3
     - conda-env >=2.6
     - cytoolz >=0.8.1
-    - setuptools >=31.0.1
 
 test:
   source_files:
