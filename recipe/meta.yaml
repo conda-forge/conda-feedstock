@@ -10,6 +10,7 @@ source:
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
   sha256: 71f414b2914c9125c517bf3d5d1eda65791ff8162f8ad7f668d1633fad592041
   patches:
+    # Workaround for https://github.com/conda/conda/issues/9507
     - conda_not_found.patch
 
 build:
