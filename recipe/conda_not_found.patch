@@ -1,0 +1,11 @@
+--- a/conda/shell/etc/bash_completion.d/conda	2019-11-04 12:30:49.000000000 -0500
++++ b/conda/shell/etc/bash_completion.d/conda	2019-12-15 11:38:04.094562891 -0500
+@@ -32,7 +32,7 @@
+             CONDA_ROOT=$(\dirname "${CONDA_ROOT}")
+         fi
+         CONDA_SOURCE=$(
+-            cat - <<'            EOF' | sed 's/^ *: //g' | python -
++            cat - <<'            EOF' | sed 's/^ *: //g' | ${CONDA_PYTHON_EXE} -
+             : from __future__ import print_function
+             : import os
+             : import conda
