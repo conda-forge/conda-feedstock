@@ -1,4 +1,4 @@
-{% set version = "4.8.0rc0" %}
+{% set version = "4.8.0" %}
 
 package:
   name: conda
@@ -7,7 +7,7 @@ package:
 source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
-  sha256: 8e136a0aa03c507d0229d9ac5054e75de0be81fa4ab87080142ff5f40707f355
+  sha256: 71f414b2914c9125c517bf3d5d1eda65791ff8162f8ad7f668d1633fad592041
 
 build:
   number: 0
