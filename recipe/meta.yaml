@@ -9,9 +9,6 @@ source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
   sha256: 971d2e896a69bd4b4fb46f7f621bd573308a68489f54345e707b8dc8b2fd5be1
-  patches:
-    # Workaround for https://github.com/conda/conda/issues/9507
-    - conda_not_found.patch
 
 build:
   number: 0
