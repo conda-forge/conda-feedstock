@@ -14,6 +14,10 @@ jobs:
         CONFIG: linux_python2.7.____cpython
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
+      linux_python3.6.____73_pypy:
+        CONFIG: linux_python3.6.____73_pypy
+        UPLOAD_PACKAGES: True
+        DOCKER_IMAGE: condaforge/linux-anvil-comp7
       linux_python3.6.____cpython:
         CONFIG: linux_python3.6.____cpython
         UPLOAD_PACKAGES: True
@@ -26,6 +30,10 @@ jobs:
         CONFIG: linux_python3.8.____cpython
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
+      linux_aarch64_python3.6.____73_pypy:
+        CONFIG: linux_aarch64_python3.6.____73_pypy
+        UPLOAD_PACKAGES: True
+        DOCKER_IMAGE: condaforge/linux-anvil-aarch64
       linux_aarch64_python3.6.____cpython:
         CONFIG: linux_aarch64_python3.6.____cpython
         UPLOAD_PACKAGES: True
@@ -38,6 +46,10 @@ jobs:
         CONFIG: linux_aarch64_python3.8.____cpython
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-aarch64
+      linux_ppc64le_python3.6.____73_pypy:
+        CONFIG: linux_ppc64le_python3.6.____73_pypy
+        UPLOAD_PACKAGES: True
+        DOCKER_IMAGE: condaforge/linux-anvil-ppc64le
       linux_ppc64le_python3.6.____cpython:
         CONFIG: linux_ppc64le_python3.6.____cpython
         UPLOAD_PACKAGES: True

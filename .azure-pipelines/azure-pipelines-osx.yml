@@ -13,6 +13,9 @@ jobs:
       osx_python2.7.____cpython:
         CONFIG: osx_python2.7.____cpython
         UPLOAD_PACKAGES: True
+      osx_python3.6.____73_pypy:
+        CONFIG: osx_python3.6.____73_pypy
+        UPLOAD_PACKAGES: True
       osx_python3.6.____cpython:
         CONFIG: osx_python3.6.____cpython
         UPLOAD_PACKAGES: True
