@@ -9,6 +9,8 @@ source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
   sha256: 123fc5b953fb62d85351f9f87b22b3849791d4d9818d790fe66e740058619259
+  patches:
+    - gh9764.patch
 
 build:
   number: 1
