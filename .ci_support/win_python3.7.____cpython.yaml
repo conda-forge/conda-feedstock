@@ -8,3 +8,8 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.7.* *_cpython
+python_impl:
+- cpython
+zip_keys:
+- - python
+  - python_impl

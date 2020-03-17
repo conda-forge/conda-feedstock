@@ -1,0 +1,74 @@
+From 93e3b7af7bcabb80aad79a255bdf014d11a5ca91 Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Mon, 16 Mar 2020 16:06:50 -0500
+Subject: [PATCH] Support running conda in PyPy
+
+---
+ conda/base/constants.py  | 3 ++-
+ conda/base/context.py    | 3 ++-
+ conda/core/initialize.py | 3 ++-
+ 3 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/conda/base/constants.py b/conda/base/constants.py
+index 256a67209e..110bc0b49c 100644
+--- a/conda/base/constants.py
++++ b/conda/base/constants.py
+@@ -12,6 +12,7 @@
+ 
+ from enum import Enum, EnumMeta
+ from os.path import join
++import struct
+ 
+ from ..common.compat import itervalues, on_win, six_with_metaclass, string_types
+ 
+@@ -20,7 +21,7 @@
+                       # this program on itself will leave it unchanged
+                       'anaconda3')
+ 
+-machine_bits = 8 * tuple.__itemsize__
++machine_bits = 8 * struct.calcsize("P")
+ 
+ APP_NAME = 'conda'
+ 
+diff --git a/conda/base/context.py b/conda/base/context.py
+index 9972178203..6677b6b8b5 100644
+--- a/conda/base/context.py
++++ b/conda/base/context.py
+@@ -11,6 +11,7 @@
+ from os.path import abspath, basename, expanduser, isdir, isfile, join, split as path_split
+ import platform
+ import sys
++import struct
+ 
+ from .constants import (APP_NAME, ChannelPriority, DEFAULTS_CHANNEL_NAME, REPODATA_FN,
+                         DEFAULT_AGGRESSIVE_UPDATE_PACKAGES, DEFAULT_CHANNELS,
+@@ -474,7 +475,7 @@ def bits(self):
+         if self.force_32bit:
+             return 32
+         else:
+-            return 8 * tuple.__itemsize__
++            return 8 * struct.calcsize("P")
+ 
+     @property
+     def root_dir(self):
+diff --git a/conda/core/initialize.py b/conda/core/initialize.py
+index 4e02acefd8..3334395d9b 100644
+--- a/conda/core/initialize.py
++++ b/conda/core/initialize.py
+@@ -41,6 +41,7 @@
+ from random import randint
+ import re
+ import sys
++import struct
+ 
+ try:
+     FileNotFoundError
+@@ -788,7 +789,7 @@ def make_entry_point(target_path, conda_prefix, module, func):
+ def make_entry_point_exe(target_path, conda_prefix):
+     # target_path: join(conda_prefix, 'Scripts', 'conda.exe')
+     exe_path = target_path
+-    bits = 8 * tuple.__itemsize__
++    bits = 8 * struct.calcsize("P")
+     source_exe_path = join(CONDA_PACKAGE_ROOT, 'shell', 'cli-%d.exe' % bits)
+     if isfile(exe_path):
+         if compute_md5sum(exe_path) == compute_md5sum(source_exe_path):
