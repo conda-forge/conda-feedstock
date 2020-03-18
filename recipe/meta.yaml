@@ -11,6 +11,7 @@ source:
   sha256: 123fc5b953fb62d85351f9f87b22b3849791d4d9818d790fe66e740058619259
   patches:
     - gh9764.patch
+    - cythonize.patch
 
 build:
   number: 1
@@ -40,6 +41,7 @@ requirements:
     - pip
     - ruamel_yaml >=0.11.14,<0.16
     - setuptools >=31.0.1
+    - cython                       # [unix and python_impl == "cpython"]
   run:
     - python
     - conda-package-handling >=1.3.0
