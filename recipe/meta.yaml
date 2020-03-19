@@ -31,6 +31,7 @@ requirements:
     - m2-filesystem                # [win]
     - m2-bash                      # [win]
     - m2-base                      # [win]
+    - {{ compiler('c') }}          # [unix and python_impl=="cpython"]
 
   host:
     - python
