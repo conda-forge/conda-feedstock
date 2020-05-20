@@ -9,3 +9,6 @@ $PYTHON -m conda init --install
 if [[ $(uname -o) == Msys ]]; then
   sed -i "s|CONDA_EXE=.*|CONDA_EXE=\'${PREFIXW//\\/\\\\}\\\\Scripts\\\\conda.exe\'|g" $PREFIX/etc/profile.d/conda.sh
 fi
+
+cd $SP_DIR/conda/common
+cythonize -i _logic.py

@@ -1,0 +1,17 @@
+diff --git a/conda/common/_logic.py b/conda/common/_logic.py
+index 2852bfdbc..55c64cbc3 100644
+--- a/conda/common/_logic.py
++++ b/conda/common/_logic.py
+@@ -669,7 +669,11 @@ class Clauses(object):
+ 
+         lo = 0
+         try0 = 0
+-        for peak in ((True, False) if maxval > 1 else (False,)):
++        if maxval > 1:
++            peaks = (True, False)
++        else:
++            peaks = (False,)
++        for peak in peaks:
+             if peak:
+                 log.trace('Beginning peak minimization')
+                 objval = peak_val
