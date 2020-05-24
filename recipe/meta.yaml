@@ -11,9 +11,10 @@ source:
   sha256: 123fc5b953fb62d85351f9f87b22b3849791d4d9818d790fe66e740058619259
   patches:
     - gh9764.patch
+    - gh9946_utf_16_replacement.patch
 
 build:
-  number: 1
+  number: 2
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
