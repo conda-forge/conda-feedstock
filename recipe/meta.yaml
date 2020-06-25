@@ -14,7 +14,7 @@ source:
     - gh9946_utf_16_replacement.patch
 
 build:
-  number: 2
+  number: 3
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -119,7 +119,7 @@ test:
 
 about:
   home: https://conda.io
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_file: LICENSE.txt
   summary: OS-agnostic, system-level binary package and environment manager.
   description: >
