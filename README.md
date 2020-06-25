@@ -5,7 +5,7 @@ Home: https://conda.io
 
 Package license: BSD 3-Clause
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: OS-agnostic, system-level binary package and environment manager.
 
