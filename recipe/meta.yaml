@@ -1,4 +1,4 @@
-{% set version = "4.8.3" %}
+{% set version = "4.8.4" %}
 
 package:
   name: conda
@@ -7,7 +7,7 @@ package:
 source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
-  sha256: 123fc5b953fb62d85351f9f87b22b3849791d4d9818d790fe66e740058619259
+  sha256: 97f50a43684ab6a67a31cb90b430540aa6eb0a60f29a5792ae0b44566b07263a
 
 build:
   number: 0
@@ -30,6 +30,7 @@ requirements:
 
   host:
     - python
+    - scandir                      # [py27]
     - enum34                       # [py<34]
     - futures >=3.0.0              # [py<34]
     - menuinst >=1.4.11,<2         # [win]
@@ -39,6 +40,7 @@ requirements:
     - conda-package-handling >=1.3.0
   run:
     - python
+    - scandir                      # [py27]
     - enum34                       # [py<34]
     - futures >=3.0.0              # [py<34]
     - menuinst >=1.4.11,<2         # [win]
@@ -104,3 +106,4 @@ extra:
     - pelson
     - scopatz
     - mbargull
+    - chenghlee
