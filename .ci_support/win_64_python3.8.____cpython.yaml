@@ -10,6 +10,8 @@ python:
 - 3.8.* *_cpython
 python_impl:
 - cpython
+target_platform:
+- win-64
 zip_keys:
 - - python
   - python_impl
