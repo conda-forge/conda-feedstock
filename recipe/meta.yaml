@@ -1,5 +1,5 @@
 {% set on_win = SUBDIR in ('win-64', 'win-32') %}
-{% set version = "4.8.3" %}
+{% set version = "4.8.4" %}
 
 package:
   name: conda
@@ -8,13 +8,13 @@ package:
 source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
-  sha256: 123fc5b953fb62d85351f9f87b22b3849791d4d9818d790fe66e740058619259
+  sha256: 97f50a43684ab6a67a31cb90b430540aa6eb0a60f29a5792ae0b44566b07263a
   patches:
     - gh9764.patch
     - gh9946_utf_16_replacement.patch
 
 build:
-  number: 3
+  number: 0
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -123,8 +123,7 @@ about:
   license_file: LICENSE.txt
   summary: OS-agnostic, system-level binary package and environment manager.
   description: >
-    Conda is an open source package management system and environment management system for installing multiple versions of software packages and their dependencies
-    and switching easily between them. It works on Linux, OS X and Windows, and was created for Python programs but can package and distribute any software.
+    Conda is an open source package management system and environment management system for installing multiple versions of software packages and their dependencies and switching easily between them. It works on Linux, OS X and Windows, and was created for Python programs but can package and distribute any software.
   doc_url: https://conda.io/projects/conda/en/latest/
   dev_url: https://github.com/conda/conda
 
