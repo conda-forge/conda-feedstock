@@ -10,7 +10,6 @@ source:
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
   sha256: 97f50a43684ab6a67a31cb90b430540aa6eb0a60f29a5792ae0b44566b07263a
   patches:
-    - gh9764.patch
     - gh9946_utf_16_replacement.patch
 
 build:
