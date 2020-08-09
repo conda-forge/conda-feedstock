@@ -11,9 +11,11 @@ source:
   sha256: 97f50a43684ab6a67a31cb90b430540aa6eb0a60f29a5792ae0b44566b07263a
   patches:
     - gh9946_utf_16_replacement.patch
+    - 0001-osx_arm64.patch
+    - 0002-osx_arm64.patch
 
 build:
-  number: 0
+  number: 1
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.

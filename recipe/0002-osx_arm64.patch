@@ -1,0 +1,20 @@
+commit 1a80322e3034221112b2c1fe00b0dbe44708e5d3
+Author: Jonathan J. Helmus <jjhelmus@gmail.com>
+Date:   Thu Aug 6 12:36:32 2020 -0500
+
+    add arm64 to non_x86_machines
+    
+    On ARM based macOS systems platform.machines() returns arm64
+
+diff --git a/conda/base/context.py b/conda/base/context.py
+index 0a48fd6c4..8f2d87545 100644
+--- a/conda/base/context.py
++++ b/conda/base/context.py
+@@ -60,6 +60,7 @@ non_x86_machines = {
+     'armv7l',
+     'aarch64',
+     'ppc64',
++    'arm64',
+     'ppc64le',
+     's390x',
+ }
