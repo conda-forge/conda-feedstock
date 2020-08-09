@@ -1,0 +1,96 @@
+commit 2c039a70feed4170564006c8df1f6d8d0be7ff11
+Author: Isuru Fernando <isuruf@gmail.com>
+Date:   Tue Aug 4 11:52:26 2020 -0500
+
+    Support for Apple silicon
+
+diff --git a/conda/_vendor/cpuinfo.py b/conda/_vendor/cpuinfo.py
+index 8db384594..96352b9f9 100644
+--- a/conda/_vendor/cpuinfo.py
++++ b/conda/_vendor/cpuinfo.py
+@@ -561,6 +561,9 @@ def parse_arch(raw_arch_string):
+         arch = 'X86_64'
+         bits = 64
+     # ARM
++    elif re.match('^arm64$|^arm64[a-z]$|^arm64-[a-z]$', raw_arch_string):
++        arch = 'ARM_8'
++        bits = 64
+     elif re.match('^armv8-a|aarch64$', raw_arch_string):
+         arch = 'ARM_8'
+         bits = 64
+diff --git a/conda/base/constants.py b/conda/base/constants.py
+index 4adabdc5d..c3ef2da31 100644
+--- a/conda/base/constants.py
++++ b/conda/base/constants.py
+@@ -71,6 +71,7 @@ KNOWN_SUBDIRS = PLATFORM_DIRECTORIES = (
+     "linux-ppc64le",
+     "linux-s390x",
+     "osx-64",
++    "osx-arm64",
+     "win-32",
+     "win-64",
+     "zos-z",
+diff --git a/conda/base/context.py b/conda/base/context.py
+index f338b2cd4..0a48fd6c4 100644
+--- a/conda/base/context.py
++++ b/conda/base/context.py
+@@ -55,7 +55,7 @@ _platform_map = {
+     'win32': 'win',
+     'zos': 'zos',
+ }
+-non_x86_linux_machines = {
++non_x86_machines = {
+     'armv6l',
+     'armv7l',
+     'aarch64',
+@@ -411,7 +411,7 @@ class Context(Configuration):
+     @property
+     def arch_name(self):
+         m = platform.machine()
+-        if self.platform == 'linux' and m in non_x86_linux_machines:
++        if m in non_x86_machines:
+             return m
+         else:
+             return _arch_names[self.bits]
+@@ -457,8 +457,8 @@ class Context(Configuration):
+         if self._subdir:
+             return self._subdir
+         m = platform.machine()
+-        if m in non_x86_linux_machines:
+-            return 'linux-%s' % m
++        if m in non_x86_machines:
++            return '%s-%s' % (self.platform, m)
+         elif self.platform == 'zos':
+             return 'zos-z'
+         else:
+diff --git a/conda/exports.py b/conda/exports.py
+index 8c6c12aca..9b3311c5b 100644
+--- a/conda/exports.py
++++ b/conda/exports.py
+@@ -87,8 +87,8 @@ from .models.channel import Channel  # NOQA
+ Channel = Channel  # NOQA
+ 
+ import conda.base.context  # NOQA
+-from .base.context import get_prefix, non_x86_linux_machines, reset_context, sys_rc_path  # NOQA
+-non_x86_linux_machines, sys_rc_path = non_x86_linux_machines, sys_rc_path
++from .base.context import get_prefix, non_x86_machines, reset_context, sys_rc_path  # NOQA
++non_x86_linux_machines, sys_rc_path = non_x86_machines, sys_rc_path
+ get_prefix = get_prefix
+ reset_context = reset_context
+ 
+diff --git a/conda/models/enums.py b/conda/models/enums.py
+index 4307488f4..008d9640a 100644
+--- a/conda/models/enums.py
++++ b/conda/models/enums.py
+@@ -18,8 +18,11 @@ from ..exceptions import CondaUpgradeError
+ class Arch(Enum):
+     x86 = 'x86'
+     x86_64 = 'x86_64'
++    # arm64 is for macOS only
++    arm64 = 'arm64'
+     armv6l = 'armv6l'
+     armv7l = 'armv7l'
++    # aarch64 is for Linux only
+     aarch64 = 'aarch64'
+     ppc64 = 'ppc64'
+     ppc64le = 'ppc64le'
