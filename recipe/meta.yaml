@@ -15,7 +15,7 @@ source:
     - 0002-osx_arm64.patch
 
 build:
-  number: 1
+  number: 2
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -53,7 +53,6 @@ requirements:
     - requests >=2.18.4,<3
     - ruamel_yaml >=0.11.14,<0.16
     - setuptools >=31.0.1
-    - archspec
   run_constrained:
     - conda-build >=3
     - conda-env >=2.6
