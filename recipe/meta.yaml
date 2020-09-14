@@ -1,5 +1,5 @@
 {% set on_win = SUBDIR in ('win-64', 'win-32') %}
-{% set version = "4.8.4" %}
+{% set version = "4.8.5" %}
 
 package:
   name: conda
@@ -8,14 +8,14 @@ package:
 source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
-  sha256: 97f50a43684ab6a67a31cb90b430540aa6eb0a60f29a5792ae0b44566b07263a
+  sha256: d8dacb3696ba6b61337f2b354f0138dd2c9212d78a0dd98dea8e1fae01b4bf0e
   patches:
     - gh9946_utf_16_replacement.patch
     - 0001-osx_arm64.patch
     - 0002-osx_arm64.patch
 
 build:
-  number: 2
+  number: 0
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
