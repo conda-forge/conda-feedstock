@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "I'm here"
+
 echo $PKG_VERSION > conda/.version
 $PYTHON setup.py install --single-version-externally-managed --record record.txt
 if [[ $(uname -o) != Msys ]]; then
