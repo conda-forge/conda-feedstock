@@ -8,17 +8,20 @@ jobs:
     vmImage: macOS-10.15
   strategy:
     matrix:
-      osx_64_python3.6.____73_pypypython_implpypy:
-        CONFIG: osx_64_python3.6.____73_pypypython_implpypy
+      osx_64_python3.6.____73_pypypython_implpypytarget_platformosx-64:
+        CONFIG: osx_64_python3.6.____73_pypypython_implpypytarget_platformosx-64
         UPLOAD_PACKAGES: 'True'
-      osx_64_python3.6.____cpythonpython_implcpython:
-        CONFIG: osx_64_python3.6.____cpythonpython_implcpython
+      osx_64_python3.6.____cpythonpython_implcpythontarget_platformosx-64:
+        CONFIG: osx_64_python3.6.____cpythonpython_implcpythontarget_platformosx-64
         UPLOAD_PACKAGES: 'True'
-      osx_64_python3.7.____cpythonpython_implcpython:
-        CONFIG: osx_64_python3.7.____cpythonpython_implcpython
+      osx_64_python3.7.____cpythonpython_implcpythontarget_platformosx-64:
+        CONFIG: osx_64_python3.7.____cpythonpython_implcpythontarget_platformosx-64
         UPLOAD_PACKAGES: 'True'
-      osx_64_python3.8.____cpythonpython_implcpython:
-        CONFIG: osx_64_python3.8.____cpythonpython_implcpython
+      osx_64_python3.8.____cpythonpython_implcpythontarget_platformosx-64:
+        CONFIG: osx_64_python3.8.____cpythonpython_implcpythontarget_platformosx-64
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_target_platformosx-arm64:
+        CONFIG: osx_arm64_target_platformosx-arm64
         UPLOAD_PACKAGES: 'True'
     maxParallel: 8
   timeoutInMinutes: 360
