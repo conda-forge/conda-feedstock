@@ -4,6 +4,9 @@ echo "I'm here"
 
 env
 
+cat build_env_setup.sh
+cat conda_build.sh
+
 echo $PKG_VERSION > conda/.version
 $PYTHON setup.py install --single-version-externally-managed --record record.txt
 if [[ $(uname -o) != Msys ]]; then
