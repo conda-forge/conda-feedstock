@@ -24,38 +24,6 @@ jobs:
         CONFIG: linux_64_python3.8.____cpythonpython_implcpythontarget_platformlinux-64
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_aarch64_python3.6.____73_pypypython_implpypytarget_platformlinux-aarch64:
-        CONFIG: linux_aarch64_python3.6.____73_pypypython_implpypytarget_platformlinux-aarch64
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-aarch64
-      linux_aarch64_python3.6.____cpythonpython_implcpythontarget_platformlinux-aarch64:
-        CONFIG: linux_aarch64_python3.6.____cpythonpython_implcpythontarget_platformlinux-aarch64
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-aarch64
-      linux_aarch64_python3.7.____cpythonpython_implcpythontarget_platformlinux-aarch64:
-        CONFIG: linux_aarch64_python3.7.____cpythonpython_implcpythontarget_platformlinux-aarch64
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-aarch64
-      linux_aarch64_python3.8.____cpythonpython_implcpythontarget_platformlinux-aarch64:
-        CONFIG: linux_aarch64_python3.8.____cpythonpython_implcpythontarget_platformlinux-aarch64
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-aarch64
-      linux_ppc64le_python3.6.____73_pypypython_implpypytarget_platformlinux-ppc64le:
-        CONFIG: linux_ppc64le_python3.6.____73_pypypython_implpypytarget_platformlinux-ppc64le
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-ppc64le
-      linux_ppc64le_python3.6.____cpythonpython_implcpythontarget_platformlinux-ppc64le:
-        CONFIG: linux_ppc64le_python3.6.____cpythonpython_implcpythontarget_platformlinux-ppc64le
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-ppc64le
-      linux_ppc64le_python3.7.____cpythonpython_implcpythontarget_platformlinux-ppc64le:
-        CONFIG: linux_ppc64le_python3.7.____cpythonpython_implcpythontarget_platformlinux-ppc64le
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-ppc64le
-      linux_ppc64le_python3.8.____cpythonpython_implcpythontarget_platformlinux-ppc64le:
-        CONFIG: linux_ppc64le_python3.8.____cpythonpython_implcpythontarget_platformlinux-ppc64le
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-ppc64le
     maxParallel: 8
   timeoutInMinutes: 360
 
