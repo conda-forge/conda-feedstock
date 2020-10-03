@@ -1,0 +1,153 @@
+From 9196b5c51b307cc0ae2a47d944c7cbac4d18440b Mon Sep 17 00:00:00 2001
+From: Eli Rykoff <erykoff@stanford.edu>
+Date: Wed, 30 Sep 2020 17:25:41 -0500
+Subject: [PATCH 1/4] Run codesign on files
+
+---
+ conda/core/portability.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/conda/core/portability.py b/conda/core/portability.py
+index 94121def06..cbfe34a9b9 100644
+--- a/conda/core/portability.py
++++ b/conda/core/portability.py
+@@ -57,6 +57,8 @@ def _update_prefix(original_data):
+         return data
+ 
+     update_file_in_place_as_binary(realpath(path), _update_prefix)
++    import subprocess
++    subprocess.run(['codesign', '-s', '-', '-f', realpath(path)])
+ 
+ 
+ def replace_prefix(mode, data, placeholder, new_prefix):
+
+From e8f861f6ac932a60d1f4449a4cfac91a886ddfdf Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Wed, 30 Sep 2020 17:24:44 -0500
+Subject: [PATCH 2/4] Run only if we are on macOS and for arm64
+
+---
+ conda/core/path_actions.py |  2 +-
+ conda/core/portability.py  | 11 ++++++++---
+ 2 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/conda/core/path_actions.py b/conda/core/path_actions.py
+index 9567764b3c..8c19045d3c 100644
+--- a/conda/core/path_actions.py
++++ b/conda/core/path_actions.py
+@@ -423,7 +423,7 @@ def verify(self):
+             update_prefix(self.intermediate_path,
+                           context.target_prefix_override or self.target_prefix,
+                           self.prefix_placeholder,
+-                          self.file_mode)
++                          self.file_mode, subdir=self.package_info.repodata_record.subdir)
+         except _PaddingError:
+             raise PaddingError(self.target_full_path, self.prefix_placeholder,
+                                len(self.prefix_placeholder))
+diff --git a/conda/core/portability.py b/conda/core/portability.py
+index cbfe34a9b9..7938a3ff1d 100644
+--- a/conda/core/portability.py
++++ b/conda/core/portability.py
+@@ -7,8 +7,11 @@
+ from os.path import realpath
+ import re
+ import struct
++import subprocess
++import sys
+ 
+ from ..base.constants import PREFIX_PLACEHOLDER
++from ..base.context import context
+ from ..common.compat import on_win
+ from ..exceptions import CondaIOError, BinaryPrefixReplacementError
+ from ..gateways.disk.update import CancelOperation, update_file_in_place_as_binary
+@@ -29,7 +32,7 @@ class _PaddingError(Exception):
+     pass
+ 
+ 
+-def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMode.text):
++def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMode.text, subdir=context.subdir):
+     if on_win and mode == FileMode.text:
+         # force all prefix replacements to forward slashes to simplify need to escape backslashes
+         # replace with unix-style path separators
+@@ -57,8 +60,10 @@ def _update_prefix(original_data):
+         return data
+ 
+     update_file_in_place_as_binary(realpath(path), _update_prefix)
+-    import subprocess
+-    subprocess.run(['codesign', '-s', '-', '-f', realpath(path)])
++
++    if mode == FileMode.binary and subdir == "osx-arm64" and sys.platform == "darwin":
++        # Apple arm64 needs signed executables
++        subprocess.run(['codesign', '-s', '-', '-f', realpath(path)])
+ 
+ 
+ def replace_prefix(mode, data, placeholder, new_prefix):
+
+From 07555b41f7fbd652e0f5c3380255cd4f3624e520 Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Wed, 30 Sep 2020 17:30:06 -0500
+Subject: [PATCH 3/4] fix flake8 failure
+
+---
+ conda/core/portability.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/conda/core/portability.py b/conda/core/portability.py
+index 7938a3ff1d..8b0a2b7869 100644
+--- a/conda/core/portability.py
++++ b/conda/core/portability.py
+@@ -32,7 +32,8 @@ class _PaddingError(Exception):
+     pass
+ 
+ 
+-def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMode.text, subdir=context.subdir):
++def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMode.text,
++                  subdir=context.subdir):
+     if on_win and mode == FileMode.text:
+         # force all prefix replacements to forward slashes to simplify need to escape backslashes
+         # replace with unix-style path separators
+
+From 82587c5301bb8328a2348971a2a909d87ee5783d Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Wed, 30 Sep 2020 18:04:38 -0500
+Subject: [PATCH 4/4] codesign only if updated
+
+---
+ conda/core/portability.py     | 4 ++--
+ conda/gateways/disk/update.py | 2 ++
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/conda/core/portability.py b/conda/core/portability.py
+index 8b0a2b7869..85396234a0 100644
+--- a/conda/core/portability.py
++++ b/conda/core/portability.py
+@@ -60,9 +60,9 @@ def _update_prefix(original_data):
+ 
+         return data
+ 
+-    update_file_in_place_as_binary(realpath(path), _update_prefix)
++    updated = update_file_in_place_as_binary(realpath(path), _update_prefix)
+ 
+-    if mode == FileMode.binary and subdir == "osx-arm64" and sys.platform == "darwin":
++    if updated and mode == FileMode.binary and subdir == "osx-arm64" and sys.platform == "darwin":
+         # Apple arm64 needs signed executables
+         subprocess.run(['codesign', '-s', '-', '-f', realpath(path)])
+ 
+diff --git a/conda/gateways/disk/update.py b/conda/gateways/disk/update.py
+index f15b3d5dce..e00564a8f4 100644
+--- a/conda/gateways/disk/update.py
++++ b/conda/gateways/disk/update.py
+@@ -41,11 +41,13 @@ def update_file_in_place_as_binary(file_full_path, callback):
+         try:
+             fh.write(callback(data))
+             fh.truncate()
++            return True
+         except CancelOperation:
+             pass  # NOQA
+     finally:
+         if fh:
+             fh.close()
++    return False
+ 
+ 
+ def rename(source_path, destination_path, force=False):
