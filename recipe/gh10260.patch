@@ -1,4 +1,4 @@
-From be6b533dc7c063120b6d4ec53bbbda723f678722 Mon Sep 17 00:00:00 2001
+From 899a2b184d6a774310aa4007b9454be96984041f Mon Sep 17 00:00:00 2001
 From: Eli Rykoff <erykoff@stanford.edu>
 Date: Wed, 30 Sep 2020 17:25:41 -0500
 Subject: [PATCH 1/4] Run codesign on files
@@ -8,10 +8,10 @@ Subject: [PATCH 1/4] Run codesign on files
  1 file changed, 2 insertions(+)
 
 diff --git a/conda/core/portability.py b/conda/core/portability.py
-index 94121def0..cbfe34a9b 100644
+index 9bcfa0c59..e8da6f204 100644
 --- a/conda/core/portability.py
 +++ b/conda/core/portability.py
-@@ -57,6 +57,8 @@ def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMod
+@@ -65,6 +65,8 @@ def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMod
          return data
  
      update_file_in_place_as_binary(realpath(path), _update_prefix)
@@ -24,7 +24,7 @@ index 94121def0..cbfe34a9b 100644
 2.28.0
 
 
-From 77242dc613ce6571b9cb513b0b9b2a792756e806 Mon Sep 17 00:00:00 2001
+From d12710ed26898139309c0d41872ef81bee048386 Mon Sep 17 00:00:00 2001
 From: Isuru Fernando <isuruf@gmail.com>
 Date: Wed, 30 Sep 2020 17:24:44 -0500
 Subject: [PATCH 2/4] Run only if we are on macOS and for arm64
@@ -48,7 +48,7 @@ index 9567764b3..8c19045d3 100644
              raise PaddingError(self.target_full_path, self.prefix_placeholder,
                                 len(self.prefix_placeholder))
 diff --git a/conda/core/portability.py b/conda/core/portability.py
-index cbfe34a9b..7938a3ff1 100644
+index e8da6f204..ecbaafb31 100644
 --- a/conda/core/portability.py
 +++ b/conda/core/portability.py
 @@ -7,8 +7,11 @@ from logging import getLogger
@@ -63,7 +63,7 @@ index cbfe34a9b..7938a3ff1 100644
  from ..common.compat import on_win
  from ..exceptions import CondaIOError, BinaryPrefixReplacementError
  from ..gateways.disk.update import CancelOperation, update_file_in_place_as_binary
-@@ -29,7 +32,7 @@ class _PaddingError(Exception):
+@@ -37,7 +40,7 @@ class _PaddingError(Exception):
      pass
  
  
@@ -72,7 +72,7 @@ index cbfe34a9b..7938a3ff1 100644
      if on_win and mode == FileMode.text:
          # force all prefix replacements to forward slashes to simplify need to escape backslashes
          # replace with unix-style path separators
-@@ -57,8 +60,10 @@ def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMod
+@@ -65,8 +68,10 @@ def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMod
          return data
  
      update_file_in_place_as_binary(realpath(path), _update_prefix)
@@ -89,7 +89,7 @@ index cbfe34a9b..7938a3ff1 100644
 2.28.0
 
 
-From 13a98efb894548ab4c195764fb28ce629eab16f8 Mon Sep 17 00:00:00 2001
+From b4943f4d45665dc453603e9010e5b863ed7147bf Mon Sep 17 00:00:00 2001
 From: Isuru Fernando <isuruf@gmail.com>
 Date: Wed, 30 Sep 2020 17:30:06 -0500
 Subject: [PATCH 3/4] fix flake8 failure
@@ -99,10 +99,10 @@ Subject: [PATCH 3/4] fix flake8 failure
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/conda/core/portability.py b/conda/core/portability.py
-index 7938a3ff1..8b0a2b786 100644
+index ecbaafb31..a6d1a9ea4 100644
 --- a/conda/core/portability.py
 +++ b/conda/core/portability.py
-@@ -32,7 +32,8 @@ class _PaddingError(Exception):
+@@ -40,7 +40,8 @@ class _PaddingError(Exception):
      pass
  
  
@@ -116,7 +116,7 @@ index 7938a3ff1..8b0a2b786 100644
 2.28.0
 
 
-From 79c5cf33b5391a002b6c0fd3ec8deb146ad53f02 Mon Sep 17 00:00:00 2001
+From 834469be7f26ee87e8b061a5c038c8048114f9be Mon Sep 17 00:00:00 2001
 From: Isuru Fernando <isuruf@gmail.com>
 Date: Wed, 30 Sep 2020 18:04:38 -0500
 Subject: [PATCH 4/4] codesign only if updated
@@ -127,10 +127,10 @@ Subject: [PATCH 4/4] codesign only if updated
  2 files changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/conda/core/portability.py b/conda/core/portability.py
-index 8b0a2b786..85396234a 100644
+index a6d1a9ea4..f006dac23 100644
 --- a/conda/core/portability.py
 +++ b/conda/core/portability.py
-@@ -60,9 +60,9 @@ def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMod
+@@ -68,9 +68,9 @@ def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMod
  
          return data
  
