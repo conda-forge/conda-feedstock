@@ -1,0 +1,70 @@
+diff --git a/conda/core/path_actions.py b/conda/core/path_actions.py
+index 9567764b3..8c19045d3 100644
+--- a/conda/core/path_actions.py
++++ b/conda/core/path_actions.py
+@@ -423,7 +423,7 @@ class PrefixReplaceLinkAction(LinkPathAction):
+             update_prefix(self.intermediate_path,
+                           context.target_prefix_override or self.target_prefix,
+                           self.prefix_placeholder,
+-                          self.file_mode)
++                          self.file_mode, subdir=self.package_info.repodata_record.subdir)
+         except _PaddingError:
+             raise PaddingError(self.target_full_path, self.prefix_placeholder,
+                                len(self.prefix_placeholder))
+diff --git a/conda/core/portability.py b/conda/core/portability.py
+index 9bcfa0c59..f006dac23 100644
+--- a/conda/core/portability.py
++++ b/conda/core/portability.py
+@@ -7,8 +7,11 @@ from logging import getLogger
+ from os.path import realpath
+ import re
+ import struct
++import subprocess
++import sys
+ 
+ from ..base.constants import PREFIX_PLACEHOLDER
++from ..base.context import context
+ from ..common.compat import on_win
+ from ..exceptions import CondaIOError, BinaryPrefixReplacementError
+ from ..gateways.disk.update import CancelOperation, update_file_in_place_as_binary
+@@ -37,7 +40,8 @@ class _PaddingError(Exception):
+     pass
+ 
+ 
+-def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMode.text):
++def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMode.text,
++                  subdir=context.subdir):
+     if on_win and mode == FileMode.text:
+         # force all prefix replacements to forward slashes to simplify need to escape backslashes
+         # replace with unix-style path separators
+@@ -64,7 +68,11 @@ def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMod
+ 
+         return data
+ 
+-    update_file_in_place_as_binary(realpath(path), _update_prefix)
++    updated = update_file_in_place_as_binary(realpath(path), _update_prefix)
++
++    if updated and mode == FileMode.binary and subdir == "osx-arm64" and sys.platform == "darwin":
++        # Apple arm64 needs signed executables
++        subprocess.run(['/usr/bin/codesign', '-s', '-', '-f', realpath(path)])
+ 
+ 
+ def replace_prefix(mode, data, placeholder, new_prefix):
+diff --git a/conda/gateways/disk/update.py b/conda/gateways/disk/update.py
+index f15b3d5dc..e00564a8f 100644
+--- a/conda/gateways/disk/update.py
++++ b/conda/gateways/disk/update.py
+@@ -41,11 +41,13 @@ def update_file_in_place_as_binary(file_full_path, callback):
+         try:
+             fh.write(callback(data))
+             fh.truncate()
++            return True
+         except CancelOperation:
+             pass  # NOQA
+     finally:
+         if fh:
+             fh.close()
++    return False
+ 
+ 
+ def rename(source_path, destination_path, force=False):
