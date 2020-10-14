@@ -20,10 +20,15 @@ jobs:
       osx_64_python3.8.____cpythonpython_implcpythontarget_platformosx-64:
         CONFIG: osx_64_python3.8.____cpythonpython_implcpythontarget_platformosx-64
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_target_platformosx-arm64:
-        CONFIG: osx_arm64_target_platformosx-arm64
+      osx_64_python3.9.____cpythonpython_implcpythontarget_platformosx-64:
+        CONFIG: osx_64_python3.9.____cpythonpython_implcpythontarget_platformosx-64
         UPLOAD_PACKAGES: 'True'
-    maxParallel: 8
+      osx_arm64_python3.8.____cpythontarget_platformosx-arm64:
+        CONFIG: osx_arm64_python3.8.____cpythontarget_platformosx-arm64
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_python3.9.____cpythontarget_platformosx-arm64:
+        CONFIG: osx_arm64_python3.9.____cpythontarget_platformosx-arm64
+        UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
 
   steps:
