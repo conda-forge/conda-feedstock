@@ -14,7 +14,7 @@ source:
     - gh10260.patch
 
 build:
-  number: 2
+  number: 3
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
