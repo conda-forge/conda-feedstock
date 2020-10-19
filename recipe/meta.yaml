@@ -11,10 +11,9 @@ source:
   sha256: 18a9c31d797d5ff0f774fce18086c67ef369138b260a611334cd9b28d8dc9bba
   patches:
     - gh9946_utf_16_replacement.patch
-    - gh10260.patch
 
 build:
-  number: 0
+  number: 1
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -131,6 +130,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - isuruf
     - jakirkham
     - jjhelmus
     - kalefranz
