@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: linux_aarch64_python3.6.____73_pypy_h544f43f6b1
+name: linux_aarch64_python3.6.____73_pypy_h1ac9c90734
 
 platform:
   os: linux
@@ -8,9 +8,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_python3.6.____73_pypypython_implpypytarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_python3.6.____73_pypypython_implpypy
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -31,7 +31,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_python3.6.____cpython_h1b51f570a8
+name: linux_aarch64_python3.6.____cpython_h4cd5b88306
 
 platform:
   os: linux
@@ -39,9 +39,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_python3.6.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_python3.6.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -62,7 +62,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_python3.7.____cpython_h8e4f5fa0e3
+name: linux_aarch64_python3.7.____cpython_he9f51abab6
 
 platform:
   os: linux
@@ -70,9 +70,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_python3.7.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_python3.7.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -93,7 +93,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_python3.8.____cpython_hdb3af9ab90
+name: linux_aarch64_python3.8.____cpython_h079251ed73
 
 platform:
   os: linux
@@ -101,9 +101,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_python3.8.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_python3.8.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -124,7 +124,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_python3.9.____cpython_h7754797f5d
+name: linux_aarch64_python3.9.____cpython_hdde18a1456
 
 platform:
   os: linux
@@ -132,9 +132,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_python3.9.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_python3.9.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
