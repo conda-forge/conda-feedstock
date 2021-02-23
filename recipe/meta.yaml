@@ -15,21 +15,12 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - cmake>=3.15
-    - git>=2.28
+    - cmake
     - python
-    - pip
-    - pip:
-      - mkdocs
-      - mkdocs-material
-      - mkdocs-macros-plugin
-    - doxygen=1.8.20                 # [linux]
-    - graphviz                       # [linux]
-    - ninja>=1.9.0
+    - ninja
     - ccache                         # [unix]
     - clcache                        # [win]
     - catch2
-    - pdf2svg                        # [unix]
 
   host:
     - gnuplot
