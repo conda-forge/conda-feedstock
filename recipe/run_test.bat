@@ -15,12 +15,12 @@ SET TEST_PLATFORM=win
 FOR /F "delims=" %%i IN ('python -c "import random as r; print(r.randint(0,4294967296))"') DO set "PYTHONHASHSEED=%%i"
 where conda
 CALL conda info
-CALL conda create -y -p .\built-conda-test-env python=3.5
+CALL conda create -y -p .\built-conda-test-env python=3.8
 CALL conda.bat activate .\built-conda-test-env
 ECHO %CONDA_PREFIX%
 IF NOT "%CONDA_PREFIX%"=="%CD%\built-conda-test-env" EXIT /B 1
 FOR /F "delims=" %%i IN ('python -c "import sys; print(sys.version_info[1])"') DO set "ENV_PYTHON_MINOR_VERSION=%%i"
-IF NOT "%ENV_PYTHON_MINOR_VERSION%" == "5" EXIT /B 1
+IF NOT "%ENV_PYTHON_MINOR_VERSION%" == "8" EXIT /B 1
 CALL conda deactivate
 SET MSYSTEM=MINGW%ARCH%
 SET MSYS2_PATH_TYPE=inherit
