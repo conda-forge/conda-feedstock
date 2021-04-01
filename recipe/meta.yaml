@@ -13,7 +13,7 @@ source:
     - gh9946_utf_16_replacement.patch
 
 build:
-  number: 0
+  number: 1
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -53,7 +53,6 @@ requirements:
     - conda-build >=3
     - conda-env >=2.6
     - cytoolz >=0.8.1
-    - setuptools >=31.0.1
 
 test:
   source_files:
