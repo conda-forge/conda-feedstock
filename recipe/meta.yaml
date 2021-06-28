@@ -1,4 +1,4 @@
-{% set version = "4.10.1" %}
+{% set version = "4.10.2" %}
 
 package:
   name: conda
@@ -7,10 +7,10 @@ package:
 source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
-  sha256: 95ad49e9ea675a7822ef7951f5ecb3abb28a2418571ed16499ec8589bc567fc8
+  sha256: ab3eef416ff6d1f452025e6602a2cb85f74cc88ffdc1335ffb7488b37305ab9b
 
 build:
-  number: 1
+  number: 0
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
