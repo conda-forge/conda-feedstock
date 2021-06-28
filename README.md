@@ -332,6 +332,7 @@ Feedstock Maintainers
 
 * [@isuruf](https://github.com/isuruf/)
 * [@jakirkham](https://github.com/jakirkham/)
+* [@jezdez](https://github.com/jezdez/)
 * [@kalefranz](https://github.com/kalefranz/)
 * [@mbargull](https://github.com/mbargull/)
 * [@mcg1969](https://github.com/mcg1969/)
