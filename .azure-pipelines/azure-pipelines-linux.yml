@@ -5,13 +5,9 @@
 jobs:
 - job: linux
   pool:
-    vmImage: ubuntu-16.04
+    vmImage: ubuntu-latest
   strategy:
     matrix:
-      linux_64_python3.6.____73_pypypython_implpypy:
-        CONFIG: linux_64_python3.6.____73_pypypython_implpypy
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
       linux_64_python3.6.____cpythonpython_implcpython:
         CONFIG: linux_64_python3.6.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
