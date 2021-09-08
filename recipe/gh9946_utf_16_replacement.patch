@@ -1,8 +1,8 @@
 diff --git a/conda/core/portability.py b/conda/core/portability.py
-index 94121def0..3b984a083 100644
+index 0a5605886..f33ba62b3 100644
 --- a/conda/core/portability.py
 +++ b/conda/core/portability.py
-@@ -60,21 +60,39 @@ def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMod
+@@ -68,21 +68,50 @@ def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMod
  
  
  def replace_prefix(mode, data, placeholder, new_prefix):
@@ -20,16 +20,27 @@ index 94121def0..3b984a083 100644
 +        'utf_32_le', 'utf_32_be'
 +    ]
 +    for encoding in popular_encodings:
-+        if mode == FileMode.text:
-+            data = data.replace(placeholder.encode(encoding),
-+                                new_prefix.encode(encoding))
-+        elif mode == FileMode.binary:
-+            data = binary_replace(data,
-+                                  placeholder.encode(encoding),
-+                                  new_prefix.encode(encoding),
-+                                  encoding=encoding)
-+        else:
-+            raise CondaIOError("Invalid mode: %r" % mode)
++        try:
++            if mode == FileMode.text:
++                data = data.replace(placeholder.encode(encoding),
++                                    new_prefix.encode(encoding))
++            elif mode == FileMode.binary:
++                data = binary_replace(data,
++                                      placeholder.encode(encoding),
++                                      new_prefix.encode(encoding),
++                                      encoding=encoding)
++            else:
++                raise CondaIOError("Invalid mode: %r" % mode)
++        except LookupError:
++            # 202108/08 - hmaarrfk - I believe that
++            # A LookupError can occur when a re-installation of python
++            # is happening. The encoding will not have been cached by python
++            # before the python ugprade occurs, then during the upgrade
++            # the specific python files cannot be found since they are in
++            # effect "lazy loaded".
++            # Because this is only expceted to happen when python is being
++            # reinstalled, we decide to silently ignore these errors
++            pass
      return data
  
  
@@ -49,7 +60,7 @@ index 94121def0..3b984a083 100644
      if on_win:
          # on Windows for binary files, we currently only replace a pyzzer-type entry point
          #   we skip all other prefix replacement
-@@ -91,7 +109,10 @@ def binary_replace(data, a, b):
+@@ -99,7 +128,10 @@ def binary_replace(data, a, b):
          return match.group().replace(a, b) + b'\0' * padding
  
      original_data_len = len(data)
@@ -62,7 +73,7 @@ index 94121def0..3b984a083 100644
      assert len(data) == original_data_len
  
 diff --git a/tests/test_install.py b/tests/test_install.py
-index 858c8a720..ae1070388 100644
+index 858c8a720..611daf790 100644
 --- a/tests/test_install.py
 +++ b/tests/test_install.py
 @@ -34,9 +34,14 @@ class TestBinaryReplace(unittest.TestCase):
