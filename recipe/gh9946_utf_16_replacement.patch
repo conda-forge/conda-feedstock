@@ -1,8 +1,18 @@
-diff --git a/conda/core/portability.py b/conda/core/portability.py
-index 94121def0..3b984a083 100644
---- a/conda/core/portability.py
-+++ b/conda/core/portability.py
-@@ -60,21 +60,39 @@ def update_prefix(path, new_prefix, placeholder=PREFIX_PLACEHOLDER, mode=FileMod
+diff --color -Naur conda-4.10.3.orig/conda/core/portability.py conda-4.10.3/conda/core/portability.py
+--- conda-4.10.3.orig/conda/core/portability.py	2021-06-29 23:30:51.000000000 -0300
++++ conda-4.10.3/conda/core/portability.py	2021-09-09 16:15:55.872345749 -0300
+@@ -3,6 +3,10 @@
+ # SPDX-License-Identifier: BSD-3-Clause
+ from __future__ import absolute_import, division, print_function, unicode_literals
+ 
++# force encodings to be available when updating python.
++# xref.: https://github.com/conda-forge/conda-feedstock/pull/135
++from encodings import utf_8, utf_16, utf_16_le, utf_16_be, utf_32, utf_32_le, utf_32_be
++
+ from logging import getLogger
+ from os.path import realpath
+ import re
+@@ -68,21 +72,40 @@
  
  
  def replace_prefix(mode, data, placeholder, new_prefix):
@@ -40,6 +50,7 @@ index 94121def0..3b984a083 100644
      replaced with `b` and the remaining string is padded with null characters.
      All input arguments are expected to be bytes objects.
 +
++
 +    Parameters
 +    ----------
 +    encoding: str
@@ -49,7 +60,7 @@ index 94121def0..3b984a083 100644
      if on_win:
          # on Windows for binary files, we currently only replace a pyzzer-type entry point
          #   we skip all other prefix replacement
-@@ -91,7 +109,10 @@ def binary_replace(data, a, b):
+@@ -99,7 +122,10 @@
          return match.group().replace(a, b) + b'\0' * padding
  
      original_data_len = len(data)
@@ -61,11 +72,10 @@ index 94121def0..3b984a083 100644
      data = pat.sub(replace, data)
      assert len(data) == original_data_len
  
-diff --git a/tests/test_install.py b/tests/test_install.py
-index 858c8a720..ae1070388 100644
---- a/tests/test_install.py
-+++ b/tests/test_install.py
-@@ -34,9 +34,14 @@ class TestBinaryReplace(unittest.TestCase):
+diff --color -Naur conda-4.10.3.orig/tests/test_install.py conda-4.10.3/tests/test_install.py
+--- conda-4.10.3.orig/tests/test_install.py	2021-06-29 23:30:51.000000000 -0300
++++ conda-4.10.3/tests/test_install.py	2021-09-09 16:16:53.941678976 -0300
+@@ -34,9 +34,14 @@
  
      @pytest.mark.xfail(on_win, reason="binary replacement on windows skipped", strict=True)
      def test_simple(self):
