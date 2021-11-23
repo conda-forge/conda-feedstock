@@ -51,6 +51,7 @@ requirements:
     - setuptools >=31.0.1
   run_constrained:
     - conda-build >=3
+    - conda-content-trust >=0.1.1
     - conda-env >=2.6
     - cytoolz >=0.8.1
 
