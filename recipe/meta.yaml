@@ -11,7 +11,6 @@ source:
   sha256: 1843355ccb93afb05f2a307e1fc37403fb9976da799236eebc3adee1c716c5fc
   patches:
     - gh9946_utf_16_replacement.patch
-    - gh10970.patch
 
 build:
   number: 0
