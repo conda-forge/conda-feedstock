@@ -260,7 +260,6 @@ Feedstock Maintainers
 * [@kalefranz](https://github.com/kalefranz/)
 * [@mbargull](https://github.com/mbargull/)
 * [@mcg1969](https://github.com/mcg1969/)
-* [@mingwandroid](https://github.com/mingwandroid/)
 * [@msarahan](https://github.com/msarahan/)
 * [@mwcraig](https://github.com/mwcraig/)
 * [@ocefpaf](https://github.com/ocefpaf/)
