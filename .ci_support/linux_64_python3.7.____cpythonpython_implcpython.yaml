@@ -5,7 +5,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 docker_image:
-- quay.io/condaforge/linux-anvil-comp7
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -17,7 +17,5 @@ python_impl:
 target_platform:
 - linux-64
 zip_keys:
-- - cdt_name
-  - docker_image
 - - python
   - python_impl
