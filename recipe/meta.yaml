@@ -1,5 +1,8 @@
 {% set on_win = SUBDIR in ('win-64', 'win-32') %}
 {% set version = "4.11.0" %}
+# Running pytest requires the inclusion of test files which baloons
+# the size of the package
+{% set run_pytest = false %}
 
 package:
   name: conda
@@ -13,7 +16,7 @@ source:
     - gh9946_utf_16_replacement.patch
 
 build:
-  number: 0
+  number: 1
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -56,12 +59,16 @@ requirements:
     - cytoolz >=0.8.1
 
 test:
+{% if run_pytest %}
   source_files:
     - tests
     - setup.cfg
+{% endif %}
   requires:
     - mock
+{% if run_pytest %}
     - pytest
+{% endif %}
     - pexpect
     - responses
     - m2-filesystem  # [win]
@@ -96,7 +103,9 @@ test:
     - SET CHERE_INVOKING=1
     - FOR /F "delims=" %%i IN ('cygpath.exe -u "%PREFIX%"') DO set "PREFIXP=%%i"
     - bash -lc "source %PREFIXP%/Scripts/activate"
+{% if run_pytest %}
     # - py.test tests -m "not integration and not installed" & exit 0
+{% endif %}
 {% else %}
     - unset CONDA_SHLVL
     - eval "$(python -m conda shell.bash hook)"
@@ -111,7 +120,9 @@ test:
     - echo $CONDA_PREFIX
     - '[ "$CONDA_PREFIX" = "$PWD/built-conda-test-env" ] || exit 1'
     - conda deactivate
+{% if run_pytest %}
     # - py.test tests -m "not integration and not installed" -vv || true
+{% endif %}
 {% endif %}
 
 about:
