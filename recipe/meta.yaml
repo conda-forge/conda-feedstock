@@ -78,8 +78,10 @@ test:
     - conda
     - conda_env
   files:
-    - test_conda.bat                # [win]
-    - test_conda.sh                 # [unix]
+    - test_runner.bat                # [win]
+    - test_runner.sh                 # [unix]
+    - commands_to_test.bat           # [win]
+    - commands_to_test.sh            # [unix]
   downstreams:
     - conda-smithy  # [python_impl == "cpython"]
   commands:
