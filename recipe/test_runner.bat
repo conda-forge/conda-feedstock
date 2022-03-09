@@ -24,7 +24,7 @@ conda activate base
 if errorlevel 1 exit 1
 
 :: Run conda tests.
-call %CD%\test_conda.bat
+call %CD%\commands_to_test.bat
 if errorlevel 1 exit 1
 
 :: Deactivate the built conda when done.
