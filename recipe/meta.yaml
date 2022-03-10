@@ -1,5 +1,5 @@
 {% set on_win = SUBDIR in ('win-64', 'win-32') %}
-{% set version = "4.11.0" %}
+{% set version = "4.12.0" %}
 # Running pytest requires the inclusion of test files which baloons
 # the size of the package; values can be "yes" or "no"
 {% set run_pytest = "yes" %}
@@ -11,12 +11,12 @@ package:
 source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
-  sha256: 1843355ccb93afb05f2a307e1fc37403fb9976da799236eebc3adee1c716c5fc
+  sha256: c6607fee920aae5d96528669fc9e61b9beff6cf8c634d1d85bc6f409d5146b44
   patches:
     - gh9946_utf_16_replacement.patch
 
 build:
-  number: 2
+  number: 0
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
