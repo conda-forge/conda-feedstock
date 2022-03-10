@@ -1,8 +1,8 @@
 {% set on_win = SUBDIR in ('win-64', 'win-32') %}
 {% set version = "4.11.0" %}
 # Running pytest requires the inclusion of test files which baloons
-# the size of the package
-{% set run_pytest = false %}
+# the size of the package; values can be "yes" or "no"
+{% set run_pytest = "yes" %}
 
 package:
   name: conda
@@ -16,7 +16,7 @@ source:
     - gh9946_utf_16_replacement.patch
 
 build:
-  number: 1
+  number: 2
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -59,14 +59,14 @@ requirements:
     - cytoolz >=0.8.1
 
 test:
-{% if run_pytest %}
+{% if run_pytest == 'yes' %}
   source_files:
     - tests
     - setup.cfg
 {% endif %}
   requires:
     - mock
-{% if run_pytest %}
+{% if run_pytest == 'yes' %}
     - pytest
 {% endif %}
     - pexpect
@@ -78,52 +78,15 @@ test:
     - conda
     - conda_env
   files:
-    - test_conda.bat                # [win]
-    - test_conda.sh                 # [unix]
+    - test_runner.bat                # [win]
+    - test_runner.sh                 # [unix]
+    - commands_to_test.bat           # [win]
+    - commands_to_test.sh            # [unix]
   downstreams:
     - conda-smithy  # [python_impl == "cpython"]
   commands:
-{% if on_win %}
-    - SET CONDA_SHLVL=
-    - CALL %PREFIX%\condabin\conda_hook.bat
-    - conda.bat activate base
-    - FOR /F "delims=" %%i IN ('python -c "import sys; print(sys.version_info[0])"') DO set "PYTHON_MAJOR_VERSION=%%i"
-    - SET TEST_PLATFORM=win
-    - FOR /F "delims=" %%i IN ('python -c "import random as r; print(r.randint(0,4294967296))"') DO set "PYTHONHASHSEED=%%i"
-    - SET
-    - where conda
-    - conda info
-    - conda create -y -p .\built-conda-test-env
-    - conda.bat activate .\built-conda-test-env
-    - ECHO %CONDA_PREFIX%
-    - IF NOT "%CONDA_PREFIX%"=="%CD%\built-conda-test-env" EXIT /B 1
-    - conda.bat deactivate
-    - SET MSYSTEM=MINGW%ARCH%
-    - SET MSYS2_PATH_TYPE=inherit
-    - SET CHERE_INVOKING=1
-    - FOR /F "delims=" %%i IN ('cygpath.exe -u "%PREFIX%"') DO set "PREFIXP=%%i"
-    - bash -lc "source %PREFIXP%/Scripts/activate"
-{% if run_pytest %}
-    # - py.test tests -m "not integration and not installed" & exit 0
-{% endif %}
-{% else %}
-    - unset CONDA_SHLVL
-    - eval "$(python -m conda shell.bash hook)"
-    - conda activate base
-    - export PYTHON_MAJOR_VERSION=$(python -c "import sys; print(sys.version_info[0])")
-    - export TEST_PLATFORM=$(python -c "import sys; print('win' if sys.platform.startswith('win') else 'unix')")
-    - export PYTHONHASHSEED=$(python -c "import random as r; print(r.randint(0,4294967296))") && echo "PYTHONHASHSEED=$PYTHONHASHSEED"
-    - env | sort
-    - conda info
-    - conda create -y -p ./built-conda-test-env
-    - conda activate ./built-conda-test-env
-    - echo $CONDA_PREFIX
-    - '[ "$CONDA_PREFIX" = "$PWD/built-conda-test-env" ] || exit 1'
-    - conda deactivate
-{% if run_pytest %}
-    # - py.test tests -m "not integration and not installed" -vv || true
-{% endif %}
-{% endif %}
+    - env run_pytest={{ run_pytest }} bash test_runner.sh   # [unix]
+    - set run_pytest={{ run_pytest }} && .\test_runner.bat  # [win]
 
 about:
   home: https://conda.io
