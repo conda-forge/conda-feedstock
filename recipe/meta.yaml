@@ -2,7 +2,7 @@
 {% set version = "4.12.0" %}
 # Running pytest requires the inclusion of test files which baloons
 # the size of the package; values can be "yes" or "no"
-{% set run_pytest = "yes" %}
+{% set run_pytest = "no" %}
 
 package:
   name: conda
