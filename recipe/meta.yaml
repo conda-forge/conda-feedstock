@@ -10,6 +10,7 @@ source:
   sha256: c6607fee920aae5d96528669fc9e61b9beff6cf8c634d1d85bc6f409d5146b44
 
 build:
+  skip: True  # [py<36]
   number: 0
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
