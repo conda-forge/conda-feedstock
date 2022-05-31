@@ -16,7 +16,7 @@ source:
     - gh9946_utf_16_replacement.patch
 
 build:
-  number: 0
+  number: 1
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
