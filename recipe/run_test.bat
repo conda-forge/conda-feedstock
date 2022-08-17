@@ -20,6 +20,7 @@ CALL conda create -q -y -p "%TEMP%\built-conda-test-env" "python=3.%TEST_MINOR_V
 CALL conda.bat activate "%TEMP%\built-conda-test-env"
 ECHO %CONDA_PREFIX%
 IF NOT "%CONDA_PREFIX%"=="%TEMP%\built-conda-test-env" EXIT /B 1
+WHERE python
 FOR /F "delims=" %%i IN ('python -c "import sys; print(sys.version_info[1])"') DO set "ENV_PYTHON_MINOR_VERSION=%%i"
 IF NOT "%ENV_PYTHON_MINOR_VERSION%" == "%TEST_MINOR_VER%" EXIT /B 1
 CALL conda deactivate
