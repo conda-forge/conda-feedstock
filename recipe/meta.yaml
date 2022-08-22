@@ -16,7 +16,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: True  # [py<36]
+  skip: True  # [py<37]
   number: {{ build_number }}
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
