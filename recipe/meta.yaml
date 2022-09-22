@@ -14,7 +14,6 @@ source:
   sha256: 35c924fab82e1be7a3359494ff02eab2b2d9b04004cc689e41f84edc1fb853c0
   patches:
     - gh9946_utf_16_replacement.patch
-    - gh11734.patch
 
 build:
   number: 0
