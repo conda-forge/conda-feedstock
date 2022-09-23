@@ -16,7 +16,7 @@ SET TEST_MINOR_VER=9
 FOR /F "delims=" %%i IN ('python -c "import random as r; print(r.randint(0,4294967296))"') DO set "PYTHONHASHSEED=%%i"
 where conda
 CALL conda info
-CALL conda create -q -y -p "%TEMP%\built-conda-test-env" "python=3.%TEST_MINOR_VER%"
+CALL conda create -y -p "%TEMP%\built-conda-test-env" "python=3.%TEST_MINOR_VER%"
 CALL conda.bat activate "%TEMP%\built-conda-test-env"
 ECHO %CONDA_PREFIX%
 IF NOT "%CONDA_PREFIX%"=="%TEMP%\built-conda-test-env" EXIT /B 1
