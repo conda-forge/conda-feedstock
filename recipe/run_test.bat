@@ -16,12 +16,12 @@ SET TEST_MINOR_VER=9
 FOR /F "delims=" %%i IN ('python -c "import random as r; print(r.randint(0,4294967296))"') DO set "PYTHONHASHSEED=%%i"
 where conda
 CALL conda info
-CALL conda create -q -y -p "%TEMP%\built-conda-test-env" "python=3.%TEST_MINOR_VER%"
-CALL conda.bat activate "%TEMP%\built-conda-test-env"
+CALL conda create -q -y -p "%TEMP%\built-conda-test-env-%PYTHONHASHSEED%" "python=3.%TEST_MINOR_VER%"
+CALL conda.bat activate "%TEMP%\built-conda-test-env-%PYTHONHASHSEED%"
 ECHO %CONDA_PREFIX%
-IF NOT "%CONDA_PREFIX%"=="%TEMP%\built-conda-test-env" EXIT /B 1
+IF NOT "%CONDA_PREFIX%"=="%TEMP%\built-conda-test-env-%PYTHONHASHSEED%" EXIT /B 1
 WHERE python
 FOR /F "delims=" %%i IN ('python -c "import sys; print(sys.version_info[1])"') DO set "ENV_PYTHON_MINOR_VERSION=%%i"
 IF NOT "%ENV_PYTHON_MINOR_VERSION%" == "%TEST_MINOR_VER%" EXIT /B 1
 CALL conda deactivate
-rd /s /q "%TEMP%\built-conda-test-env"
+rd /s /q "%TEMP%\built-conda-test-env-%PYTHONHASHSEED%"
