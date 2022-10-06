@@ -12,8 +12,6 @@ source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/archive/{{ version }}.tar.gz
   sha256: 30c4cee48ef3acc4e2d802c05baee44f5385f55b0c23c547b0961c51e1d140d2
-  patches:
-    - gh9946_utf_16_replacement.patch
 
 build:
   number: 1
