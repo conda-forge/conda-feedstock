@@ -97,7 +97,7 @@ about:
     and their dependencies and switching easily between them. It works on
     Linux, OS X and Windows, and was created for Python programs but can
     package and distribute any software.
-  doc_url: https://conda.io/projects/conda/en/latest/
+  doc_url: https://docs.conda.io/projects/conda/en/stable/
   dev_url: https://github.com/conda/conda
 
 extra:
