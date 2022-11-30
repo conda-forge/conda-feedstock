@@ -86,7 +86,7 @@ test:
     - conda-smithy  # [py3k]
 
 about:
-  home: https://conda.io
+  home: https://docs.conda.io
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
