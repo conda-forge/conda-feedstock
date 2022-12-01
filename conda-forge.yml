@@ -14,3 +14,7 @@ conda_build:
   pkg_format: '2'
 azure:
   store_build_artifacts: true
+linux:
+  enabled: false
+osx:
+  enabled: false
