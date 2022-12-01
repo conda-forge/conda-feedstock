@@ -1,6 +1,6 @@
 {% set name = "conda" %}
 {% set version = "22.11.0" %}
-{% set build_number = "0" %}
+{% set build_number = "1" %}
 {% set sha256 = "f280c1e68601adbfacb63d71d7319b0067f9e2543bb56b98d8093d22617ee42e" %}
 # Running the upstream test suite requires the inclusion of test files, which
 # balloons the size of the package and occasionally triggers false-positive
@@ -56,6 +56,7 @@ requirements:
     - setuptools >=31.0.1
     - toolz >=0.8.1
     - pluggy >=1.0.0
+    - tqdm >=4
   run_constrained:
     - conda-build >=3
     - conda-content-trust >=0.1.1
