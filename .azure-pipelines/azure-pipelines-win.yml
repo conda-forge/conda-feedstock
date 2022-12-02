@@ -70,7 +70,7 @@ jobs:
         if EXIST LICENSE.txt (
           copy LICENSE.txt "recipe\\recipe-scripts-license.txt"
         )
-        conda.exe mambabuild "recipe" -m .ci_support\%CONFIG%.yaml --suppress-variables
+        conda.exe build "recipe" -m .ci_support\%CONFIG%.yaml --suppress-variables
       displayName: Build recipe
       env:
         PYTHONUNBUFFERED: 1
