@@ -44,7 +44,9 @@ jobs:
 
     - script: |
         call activate base
-        mamba.exe install "python=3.9" conda-build conda pip boa conda-forge-ci-setup=3 "py-lief<0.12" -c conda-forge --strict-channel-priority --yes
+        set CONDA_CHANNELS=conda-forge
+        set CONDA_CHANNEL_PRIORITY=flexible
+        mamba.exe install "python=3.9" conda-build conda=22.11.0 pip boa conda-forge-ci-setup=3 "py-lief<0.12" -c conda-forge -c conda-forge/label/broken --yes
       displayName: Install conda-build
 
     - script: set PYTHONUNBUFFERED=1

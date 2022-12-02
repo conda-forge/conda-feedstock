@@ -27,6 +27,10 @@ mamba install --update-specs --quiet --yes --channel conda-forge \
     conda-build pip boa conda-forge-ci-setup=3 "py-lief<0.12"
 mamba update --update-specs --yes --quiet --channel conda-forge \
     conda-build pip boa conda-forge-ci-setup=3 "py-lief<0.12"
+CONDA_CHANNELS=conda-forge \
+CONDA_CHANNEL_PRIORITY=flexible \
+mamba install --yes --quiet --channel conda-forge --channel conda-forge/label/broken \
+    conda=22.11.0
 
 
 
