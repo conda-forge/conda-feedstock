@@ -16,7 +16,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -63,7 +63,7 @@ requirements:
     - conda-content-trust >=0.1.1
     - conda-env >=2.6
     - cytoolz >=0.8.1
-    - conda-libmamba-solver >=22.11.0
+    - conda-libmamba-solver >=22.12.0
 
 test:
 {% if run_pytest == 'yes' %}
