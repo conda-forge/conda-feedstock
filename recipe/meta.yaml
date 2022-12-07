@@ -16,7 +16,6 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: true  # [python_impl == 'pypy']
   number: 0
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
