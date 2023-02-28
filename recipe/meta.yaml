@@ -107,8 +107,10 @@ about:
 
 extra:
   recipe-maintainers:
+    - dbast
     - isuruf
     - jakirkham
-    - ocefpaf
-    - mbargull
     - jezdez
+    - kenodegard
+    - mbargull
+    - ocefpaf
