@@ -403,13 +403,6 @@ Feedstock Maintainers
 * [@isuruf](https://github.com/isuruf/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@jezdez](https://github.com/jezdez/)
-* [@kalefranz](https://github.com/kalefranz/)
 * [@mbargull](https://github.com/mbargull/)
-* [@mingwandroid](https://github.com/mingwandroid/)
-* [@msarahan](https://github.com/msarahan/)
-* [@mwcraig](https://github.com/mwcraig/)
 * [@ocefpaf](https://github.com/ocefpaf/)
-* [@patricksnape](https://github.com/patricksnape/)
-* [@pelson](https://github.com/pelson/)
-* [@scopatz](https://github.com/scopatz/)
 

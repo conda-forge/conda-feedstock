@@ -107,15 +107,10 @@ about:
 
 extra:
   recipe-maintainers:
+    - dbast
     - isuruf
     - jakirkham
-    - kalefranz
-    - mingwandroid
-    - msarahan
-    - mwcraig
-    - ocefpaf
-    - patricksnape
-    - pelson
-    - scopatz
-    - mbargull
     - jezdez
+    - kenodegard
+    - mbargull
+    - ocefpaf
