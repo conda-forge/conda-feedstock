@@ -9,7 +9,7 @@ index 68ca1a7ad..c514fa7e1 100644
 -        if not isinstance(version, Version):
 +        try:
              self._version = parse(version)
-+        except Exception:
++        except TypeError:
 +            self._version = parse("0.0.0.dev0+placeholder")
  
      def __call__(
