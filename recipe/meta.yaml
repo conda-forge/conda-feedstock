@@ -14,6 +14,8 @@ source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/{{ name }}/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - patches/01-deprecations-version-fallback.patch
 
 build:
   number: 0
