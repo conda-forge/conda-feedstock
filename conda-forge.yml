@@ -12,3 +12,4 @@ provider:
 test_on_native_only: true
 conda_build:
   pkg_format: '2'
+remote-ci-setup: ["conda-forge-ci-setup=3", "libsolv<0.7.23"]  # https://github.com/conda/conda-build/issues/4750
