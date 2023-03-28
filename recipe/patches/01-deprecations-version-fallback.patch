@@ -1,0 +1,16 @@
+diff --git a/conda/deprecations.py b/conda/deprecations.py
+index 68ca1a7ad..c514fa7e1 100644
+--- a/conda/deprecations.py
++++ b/conda/deprecations.py
+@@ -25,8 +25,10 @@ class DeprecationHandler:
+ 
+         :param version: The version to compare against when checking deprecation statuses.
+         """
+-        if not isinstance(version, Version):
++        try:
+             self._version = parse(version)
++        except TypeError:
++            self._version = parse("0.0.0.dev0+placeholder")
+ 
+     def __call__(
+         self,
