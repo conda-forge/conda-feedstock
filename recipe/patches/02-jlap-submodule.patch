@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index b2d7a975a..aa55973c9 100644
+--- a/setup.py
++++ b/setup.py
+@@ -70,7 +70,7 @@ setup(
+     ],
+     packages=conda.auxlib.packaging.find_packages(
+         exclude=("tests", "tests.*", "build", "utils", ".tox")
+-    ),
++    ) + ["conda.gateways.repodata.jlap"],
+     package_data={
+         '': package_files('conda/shell') + ['LICENSE'],
+     },

@@ -16,9 +16,10 @@ source:
   sha256: {{ sha256 }}
   patches:
     - patches/01-deprecations-version-fallback.patch
+    - patches/02-jlap-submodule.patch
 
 build:
-  number: 0
+  number: 1
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -88,6 +89,7 @@ test:
     - m2-base        # [win]
   imports:
     - conda
+    - conda.gateways.repodata.jlap
     - conda_env
   files:
     - test_runner.bat                # [win]
