@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd conda-src/
+
 if [[ "$build_platform" != "$target_platform" && -z "$PYTHONPATH" ]]; then
     # conda-build special cases conda and doesn't activate it
     # See https://github.com/conda/conda-build/blob/1010e8309a20e144c51b1d86b2daebd146be923e/conda_build/metadata.py#L2273

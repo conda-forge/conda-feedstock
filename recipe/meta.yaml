@@ -14,11 +14,12 @@ source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/{{ name }}/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  folder: conda-src  # avoid bootstrapping issues
   patches:
     - patches/01-deprecations-version-fallback.patch
 
 build:
-  number: 0
+  number: 1
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -73,8 +74,8 @@ requirements:
 test:
 {% if run_pytest == 'yes' %}
   source_files:
-    - tests
-    - setup.cfg
+    - conda-src/tests
+    - conda-src/setup.cfg
 {% endif %}
   requires:
     - mock
