@@ -63,6 +63,7 @@ requirements:
     - pluggy >=1.0.0
     - tqdm >=4
     - boltons >=23.0.0
+    - jsonpatch >=1.32
   run_constrained:
     - conda-build >=3
     - conda-content-trust >=0.1.1
