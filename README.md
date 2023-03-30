@@ -400,9 +400,11 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@dbast](https://github.com/dbast/)
 * [@isuruf](https://github.com/isuruf/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@jezdez](https://github.com/jezdez/)
+* [@kenodegard](https://github.com/kenodegard/)
 * [@mbargull](https://github.com/mbargull/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 

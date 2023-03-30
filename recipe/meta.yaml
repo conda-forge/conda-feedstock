@@ -1,7 +1,7 @@
 {% set on_win = SUBDIR in ('win-64', 'win-32') %}
 {% set name = "conda" %}
-{% set version = "23.3.0" %}
-{% set sha256 = "6e7d8e6247e51847fcf8b264ddfa8eeafc66891db351d5d660ea46c459c46684" %}
+{% set version = "23.3.1" %}
+{% set sha256 = "f0203ae42a8a360170e8aebd45e42b6c8bf283d44b9016ef4b30451c0b55c8dc" %}
 # Running pytest requires the inclusion of test files which baloons
 # the size of the package; values can be "yes" or "no"
 {% set run_pytest = "no" %}
@@ -63,6 +63,7 @@ requirements:
     - pluggy >=1.0.0
     - tqdm >=4
     - boltons >=23.0.0
+    - jsonpatch >=1.32
   run_constrained:
     - conda-build >=3
     - conda-content-trust >=0.1.1
