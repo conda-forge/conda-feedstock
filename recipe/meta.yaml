@@ -107,22 +107,6 @@ about:
   dev_url: https://github.com/conda/conda
 
 extra:
-  recipe-maintainers:
-    - jakirkham
-    - jjhelmus
-    - kalefranz
-    - mcg1969
-    - msarahan
-    - mwcraig
-    - ocefpaf
-    - patricksnape
-    - pelson
-    - scopatz
-    - mbargull
-    - chenghlee
-    - jezdez
-    - kenodegard
-    - travishathaway
   skip-lints:
     - python_build_tool_in_run
     - missing_pip_check
