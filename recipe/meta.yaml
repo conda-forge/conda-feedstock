@@ -123,7 +123,6 @@ extra:
     - jezdez
     - kenodegard
     - travishathaway
-    - beeankha
   skip-lints:
     - python_build_tool_in_run
     - missing_pip_check
