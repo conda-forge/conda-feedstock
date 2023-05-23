@@ -18,7 +18,7 @@ source:
 build:
   skip: True  # [py<38]
   number: {{ build_number }}
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv && python -m conda init --install
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv && {{ PYTHON }} -m conda init --install
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
