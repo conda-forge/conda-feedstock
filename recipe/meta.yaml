@@ -43,9 +43,9 @@ requirements:
     - hatch-vcs 0.2.0
     - wheel
     # for `conda init` in build/script above
-    - ruamel.yaml 0.17.21
-    - tqdm 4.64.0
-    - menuinst 1.4.19              # [win]
+    - ruamel.yaml
+    - tqdm
+    - menuinst                     # [win]
   run:
     - python
     - conda-package-handling >=1.3.0
