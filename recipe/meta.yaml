@@ -1,7 +1,7 @@
 {% set name = "conda" %}
-{% set version = "23.7.3" %}
+{% set version = "23.7.4" %}
 {% set build_number = "0" %}
-{% set sha256 = "c2c7c12a087b03e2d6833fe4d9b4898de0216721d19eb4ac8b573ff833378711" %}
+{% set sha256 = "24dd9d72ca38b5b47506efc9f45dbcb388279514d4b4cb45889eaf6d7d6b8982" %}
 # Running the upstream test suite requires the inclusion of test files, which
 # balloons the size of the package and occasionally triggers false-positive
 # security warnings; values can be "yes" or "no".
