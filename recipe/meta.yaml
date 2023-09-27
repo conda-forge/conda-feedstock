@@ -64,7 +64,7 @@ requirements:
     - truststore >=0.8.0           # [py>=310]
   run_constrained:
     - conda-build >=3.18.3
-    - conda-content-trust >=0.1.1
+    - conda-content-trust >=0.2.0
     - conda-env >=2.6
     - cytoolz >=0.8.1
     - conda-libmamba-solver >=23.7.0
