@@ -66,7 +66,6 @@ requirements:
     - conda-build >=3.18.3
     - conda-content-trust >=0.1.1
     - conda-env >=2.6
-    - cytoolz >=0.8.1
     - conda-libmamba-solver >=23.7.0
 
 test:
