@@ -16,7 +16,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv && {{ PYTHON }} -m conda init --install
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
@@ -63,6 +63,7 @@ requirements:
     - boltons >=23.0.0
     - jsonpatch >=1.32
     - truststore >=0.8.0           # [py>=310]
+    - archspec
   run_constrained:
     - conda-build >=3
     - conda-content-trust >=0.1.1
