@@ -26,7 +26,7 @@ conda activate base
 mamba install --update-specs --quiet --yes --channel conda-forge --strict-channel-priority \
     pip mamba conda-build boa conda-forge-ci-setup=3 "libsolv<0.7.23"
 mamba update --update-specs --yes --quiet --channel conda-forge --strict-channel-priority \
-    pip mamba conda-build boa conda-forge-ci-setup libsolv
+    pip mamba conda-build boa conda-forge-ci-setup=3 "libsolv<0.7.23"
 
 
 
