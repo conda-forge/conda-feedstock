@@ -64,11 +64,11 @@ requirements:
     - jsonpatch >=1.32
     - truststore >=0.8.0           # [py>=310]
     - archspec
+    - conda-libmamba-solver >=23.7.0
   run_constrained:
     - conda-build >=3
     - conda-content-trust >=0.1.1
     - conda-env >=2.6
-    - conda-libmamba-solver >=23.7.0
 
 test:
 {% if run_pytest == 'yes' %}
