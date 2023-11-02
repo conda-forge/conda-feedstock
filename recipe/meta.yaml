@@ -1,7 +1,7 @@
 {% set name = "conda" %}
-{% set version = "23.9.0" %}
+{% set version = "23.10.0" %}
 {% set build_number = "0" %}
-{% set sha256 = "423aaa6f4af0b04c2608b63230ccdf60012896e7888ad0ddba06ab197ec44014" %}
+{% set sha256 = "358692c92fb97eccefca1114c3f17e3bf5c3b419f602cbeda604cfdfc469791a" %}
 # Running the upstream test suite requires the inclusion of test files, which
 # balloons the size of the package and occasionally triggers false-positive
 # security warnings; values can be "yes" or "no".
@@ -62,11 +62,12 @@ requirements:
     - boltons >=23.0.0
     - jsonpatch >=1.32
     - truststore >=0.8.0           # [py>=310]
+    - archspec
+    - conda-libmamba-solver >=23.11.0
   run_constrained:
     - conda-build >=3.18.3
     - conda-content-trust >=0.1.1
     - conda-env >=2.6
-    - conda-libmamba-solver >=23.7.0
 
 test:
 {% if run_upstream_tests == 'yes' %}
