@@ -1,7 +1,7 @@
 {% set name = "conda" %}
-{% set version = "24.1.2" %}
+{% set version = "24.3.0" %}
 {% set build_number = "0" %}
-{% set sha256 = "6bc4f1f72a0edddefa10e0667d6ab2eb2f1956919a59508bf3bf6c001bf7a6e8" %}
+{% set sha256 = "017297e3a46193aeac2b7bcbb5064f394a968122b1c1c113c1b1fc1446270f0f" %}
 # Running the upstream test suite requires the inclusion of test files, which
 # balloons the size of the package and occasionally triggers false-positive
 # security warnings; values can be "yes" or "no".
@@ -12,7 +12,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/conda/{{ name }}/archive/{{ version }}.tar.gz
+  url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -47,8 +47,9 @@ requirements:
     - requests >=2.28.0,<3
     - ruamel.yaml >=0.11.14,<0.19
     - tqdm >=4
+    - boltons >=23.0.0
   run:
-    - archspec
+    - archspec >=0.2.3
     - boltons >=23.0.0
     - charset-normalizer
     - conda-libmamba-solver >=23.11.0
