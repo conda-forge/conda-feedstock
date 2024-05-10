@@ -411,6 +411,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@beeankha](https://github.com/beeankha/)
 * [@dbast](https://github.com/dbast/)
 * [@isuruf](https://github.com/isuruf/)
 * [@jakirkham](https://github.com/jakirkham/)
