@@ -99,7 +99,7 @@ test:
     - commands_to_test.bat           # [win]
     - commands_to_test.sh            # [unix]
   downstreams:
-    - conda-smithy  # [python_impl == "cpython" and py<311]
+    - conda-smithy  # [python_impl == "cpython" and py<312]
 
 about:
   home: https://conda.io
