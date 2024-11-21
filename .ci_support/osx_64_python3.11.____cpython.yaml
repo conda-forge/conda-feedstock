@@ -16,7 +16,12 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.11.* *_cpython
+python_impl:
+- cpython
 python_min:
 - '3.9'
 target_platform:
 - osx-64
+zip_keys:
+- - python
+  - python_impl
