@@ -101,7 +101,7 @@ test:
     - commands_to_test.bat           # [win]
     - commands_to_test.sh            # [unix]
   downstreams:
-    {% if (py>=311 and not win) or (py==pymin and win) %}
+    {% if (py>=311 and linux) or (py==pymin and win) %}
     - conda-smithy
     {% endif %}
 
