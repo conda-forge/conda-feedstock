@@ -6,6 +6,7 @@
 # the size of the package; values can be "yes" or "no"
 {% set run_pytest = "no" %}
 {% set py = py|default(39) %}
+{% set pymin = python_min|default("3.9")|replace(".", "")|int %}
 
 package:
   name: conda
