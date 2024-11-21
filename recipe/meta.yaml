@@ -99,7 +99,7 @@ test:
     - commands_to_test.bat           # [win]
     - commands_to_test.sh            # [unix]
   downstreams:
-- conda-smithy  # [(py>=311 and not win) or (py=={{ python_min|replace(".", "") }} and win)]
+    - conda-smithy  # [(py>=311 and not win) or (py=={{ python_min|replace(".", "") }} and win)]
 
 about:
   home: https://conda.io
