@@ -1,7 +1,5 @@
 BUILD:
 - aarch64-conda_cos7-linux-gnu
-ace:
-- 8.0.1
 cdt_arch:
 - aarch64
 cdt_name:
@@ -18,12 +16,5 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.11.* *_cpython
-python_impl:
-- cpython
-python_min:
-- '3.9'
 target_platform:
 - linux-aarch64
-zip_keys:
-- - python
-  - python_impl
