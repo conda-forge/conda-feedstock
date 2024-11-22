@@ -3,7 +3,7 @@ About conda-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/conda-feedstock/blob/main/LICENSE.txt)
 
-Home: https://conda.io
+Home: https://conda.io/
 
 Package license: BSD-3-Clause
 
@@ -18,7 +18,6 @@ management system for installing multiple versions of software packages
 and their dependencies and switching easily between them. It works on
 Linux, OS X and Windows, and was created for Python programs but can
 package and distribute any software.
-
 
 Current build status
 ====================
