@@ -69,18 +69,26 @@ requirements:
     - conda-env >=2.6
 
 tests:
-  - script: run_test
+  - script:
+      - if: unix
+        then:
+          - sh ./run_test.sh
+        else:
+          - call run_test.bat
     files:
       source:
         - tests/
         - setup.cfg
       recipe:
-        - run_test.bat
-        - run_test.sh
-        - test_runner.bat                # [win]
-        - test_runner.sh                 # [unix]
-        - commands_to_test.bat           # [win]
-        - commands_to_test.sh            # [unix]
+        - if: win
+          then:
+            - run_test.bat
+            - test_runner.bat
+            - commands_to_test.bat
+          else:
+            - run_test.sh
+            - test_runner.sh
+            - commands_to_test.sh
     requirements:
       run:
         - mock
@@ -93,7 +101,7 @@ tests:
             - m2-bash
             - m2-base
   - python:
-      imports: 
+      imports:
         - conda
         - conda_env
   - downstream: conda-smithy
