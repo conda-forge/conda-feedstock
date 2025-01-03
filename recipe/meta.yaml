@@ -14,7 +14,7 @@ source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patch:
+  patches:
     # Emergency patch since without it users of mamba are seeing an infinite hang
     # https://github.com/conda/conda/pull/14468/files
     - conda_reactivate_hanging_patch.patch
