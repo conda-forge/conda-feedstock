@@ -14,9 +14,13 @@ source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patch:
+    # Emergency patch since without it users of mamba are seeing an infinite hang
+    # https://github.com/conda/conda/pull/14468/files
+    - conda_reactivate_hanging_patch.patch
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv && {{ PYTHON }} -m conda init --install
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
