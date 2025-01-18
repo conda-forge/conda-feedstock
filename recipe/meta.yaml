@@ -1,7 +1,7 @@
 {% set on_win = SUBDIR in ('win-64', 'win-32') %}
 {% set name = "conda" %}
-{% set version = "24.11.3" %}
-{% set sha256 = "5c4e352e737315b6dc86448abbb0c76834b21ef1663b02c797d4f55af8be981c" %}
+{% set version = "25.1.0" %}
+{% set sha256 = "91307b89f6e47f082be75dac0d335fdb15d2501a373f55c792218d7f00b250f7" %}
 # Running pytest requires the inclusion of test files which baloons
 # the size of the package; values can be "yes" or "no"
 {% set run_pytest = "no" %}
