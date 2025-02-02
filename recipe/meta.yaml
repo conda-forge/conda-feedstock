@@ -20,7 +20,7 @@ source:
     - patches/0001-GH-14117-logging-lock-internal-changes-py313.patch
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv && {{ PYTHON }} -m conda init --install
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
