@@ -14,6 +14,10 @@ source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/{{ name }}/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    # Backport https://github.com/conda/conda/pull/14117 for changes in the
+    # Python 3.13+ logging module internals
+    - patches/0001-GH-14117-logging-lock-internal-changes-py313.patch
 
 build:
   number: 0
