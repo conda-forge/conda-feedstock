@@ -101,7 +101,7 @@ test:
     - commands_to_test.bat           # [win]
     - commands_to_test.sh            # [unix]
   downstreams:
-    - conda-smithy  # [py>=311 and not osx]
+    - conda-smithy  # [py>=311,<313 and not osx]
 
 about:
   home: https://conda.io
