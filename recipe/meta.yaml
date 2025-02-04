@@ -80,7 +80,6 @@ requirements:
     - conda-content-trust >=0.1.1
     - conda-env >=2.6
 
-{% if (python or "").split(".")[:2]|map("int")|list < [3, 13] %}
 test:
 {% if run_pytest == 'yes' %}
   source_files:
@@ -107,7 +106,6 @@ test:
     - commands_to_test.sh            # [unix]
   downstreams:
     - conda-smithy  # [py>=311 and not osx]
-{% endif %}
 
 about:
   home: https://conda.io
