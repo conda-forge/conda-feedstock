@@ -80,7 +80,7 @@ requirements:
     - conda-content-trust >=0.1.1
     - conda-env >=2.6
 
-{% if python.split(".")[:2] < (3, 13) %}
+{% if python.split(".")[:2] < [3, 13] %}
 test:
 {% if run_pytest == 'yes' %}
   source_files:
