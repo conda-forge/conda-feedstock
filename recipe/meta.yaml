@@ -80,32 +80,34 @@ requirements:
     - conda-content-trust >=0.1.1
     - conda-env >=2.6
 
-test:
-{% if run_pytest == 'yes' %}
-  source_files:
-    - tests
-    - setup.cfg
-{% endif %}
-  requires:
-    - mock
-{% if run_pytest == 'yes' %}
-    - pytest
-{% endif %}
-    - pexpect
-    - responses
-    - m2-filesystem  # [win]
-    - m2-bash        # [win]
-    - m2-base        # [win]
-  imports:
-    - conda
-    - conda_env
-  files:
-    - test_runner.bat                # [win]
-    - test_runner.sh                 # [unix]
-    - commands_to_test.bat           # [win]
-    - commands_to_test.sh            # [unix]
-  downstreams:
-    - conda-smithy  # [py>=311 and py<313 and not osx]
+# Uncomment after Python 3.13 is built
+#
+# test:
+# {% if run_pytest == 'yes' %}
+#   source_files:
+#     - tests
+#     - setup.cfg
+# {% endif %}
+#   requires:
+#     - mock
+# {% if run_pytest == 'yes' %}
+#     - pytest
+# {% endif %}
+#     - pexpect
+#     - responses
+#     - m2-filesystem  # [win]
+#     - m2-bash        # [win]
+#     - m2-base        # [win]
+#   imports:
+#     - conda
+#     - conda_env
+#   files:
+#     - test_runner.bat                # [win]
+#     - test_runner.sh                 # [unix]
+#     - commands_to_test.bat           # [win]
+#     - commands_to_test.sh            # [unix]
+#   downstreams:
+#     - conda-smithy  # [py>=311 and py<313 and not osx]
 
 about:
   home: https://conda.io
