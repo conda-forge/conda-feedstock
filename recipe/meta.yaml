@@ -71,8 +71,6 @@ requirements:
     - tqdm >=4
     - truststore >=0.8.0           # [py>=310]
     - zstandard >=0.19.0
-    - libmambapy >=2
-    - conda-libmamba-solver >=25
   run_constrained:
     - conda-build >=24.3
     - conda-content-trust >=0.1.1
