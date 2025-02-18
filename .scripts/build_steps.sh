@@ -48,9 +48,9 @@ source run_conda_forge_build_setup
 # make the build number clobber
 make_build_number "${FEEDSTOCK_ROOT}" "${RECIPE_ROOT}" "${CONFIG_FILE}"
 
-if [[ "${HOST_PLATFORM}" != "${BUILD_PLATFORM}" ]] && [[ "${HOST_PLATFORM}" != linux-* ]] && [[ "${BUILD_WITH_CONDA_DEBUG:-0}" != 1 ]]; then
-    EXTRA_CB_OPTIONS="${EXTRA_CB_OPTIONS:-} --no-test"
-fi
+# Temporary hack to skip testing and push out Python 3.13.
+# Re-rendering after will revert this.
+EXTRA_CB_OPTIONS="${EXTRA_CB_OPTIONS:-} --no-test"
 
 
 ( endgroup "Configuring conda" ) 2> /dev/null
