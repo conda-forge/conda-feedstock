@@ -12,10 +12,11 @@ source:
   fn: conda-{{ version }}.tar.gz
   url: https://github.com/conda/conda/releases/download/{{ version }}/conda-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  folder: conda-src
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv && {{ PYTHON }} -I -m conda init --install
+  script: {{ PYTHON }} -m pip install conda-src/ --no-deps --no-build-isolation -vv && {{ PYTHON }} -m conda init --install
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -76,8 +77,8 @@ requirements:
 test:
 {% if run_pytest == 'yes' %}
   source_files:
-    - tests
-    - setup.cfg
+    - conda-src/tests
+    - conda-src/setup.cfg
 {% endif %}
   requires:
     - mock
