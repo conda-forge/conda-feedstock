@@ -94,7 +94,7 @@ test:
     - m2-filesystem  # [win]
     - m2-bash        # [win]
     - m2-base        # [win]
-    - python 3.10                # [python_ge_310]
+    - python 3.11                # [python_ge_310]
     - python {{ python_min }}    # [not python_ge_310]
   imports:
     - conda
@@ -105,7 +105,7 @@ test:
     - commands_to_test.bat           # [win]
     - commands_to_test.sh            # [unix]
   downstreams:
-    - conda-smithy  # [py>=311 and not osx]
+    - conda-smithy  # [python_ge_310 and not osx]
 
 about:
   home: https://conda.io
