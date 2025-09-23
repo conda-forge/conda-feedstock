@@ -36,8 +36,7 @@ requirements:
     - m2-bash                      # [win]
     - m2-base                      # [win]
   host:
-    - python {{ python_min }}      # [not python_ge_310]
-    - python 3.10                  # [python_ge_310]
+    - python {{ python_min }}
     - pip
     - hatchling >=1.12.2
     - hatch-vcs >=0.2.0
@@ -68,11 +67,9 @@ requirements:
     - ruamel.yaml >=0.11.14,<0.19
     - setuptools >=60.0.0
     - tqdm >=4
-    - truststore >=0.8.0           # [python_ge_310]
+    - truststore >=0.8.0
     - zstandard >=0.19.0
-    - python >=3.10                # [python_ge_310]
-    - python <3.10                 # [not python_ge_310]
-    - python >={{ python_min }}    # [not python_ge_310]
+    - python >={{ python_min }}
   run_constrained:
     - conda-build >=24.3
     - conda-content-trust >=0.1.1
@@ -94,8 +91,7 @@ test:
     - m2-filesystem  # [win]
     - m2-bash        # [win]
     - m2-base        # [win]
-    - python 3.11                # [python_ge_310]
-    - python {{ python_min }}    # [not python_ge_310]
+    - python {{ python_min }}
   imports:
     - conda
     - conda_env
@@ -105,7 +101,7 @@ test:
     - commands_to_test.bat           # [win]
     - commands_to_test.sh            # [unix]
   downstreams:
-    - conda-smithy  # [python_ge_310 and not osx]
+    - conda-smithy  # [not osx]
 
 about:
   home: https://conda.io
