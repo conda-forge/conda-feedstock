@@ -8,8 +8,22 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
+<<<<<<< HEAD
       win_64_:
         CONFIG: win_64_
+=======
+      win_64_python3.10.____cpython:
+        CONFIG: win_64_python3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_python3.11.____cpython:
+        CONFIG: win_64_python3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_python3.12.____cpython:
+        CONFIG: win_64_python3.12.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_python3.13.____cp313:
+        CONFIG: win_64_python3.13.____cp313
+>>>>>>> a381269c1fd845bda0f15443b1af43c7c1288a45
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables:

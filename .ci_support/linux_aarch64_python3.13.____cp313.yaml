@@ -10,7 +10,5 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.13.* *_cp313
-python_min:
-- '3.10'
 target_platform:
-- linux-64
+- linux-aarch64
