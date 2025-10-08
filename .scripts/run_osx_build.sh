@@ -77,7 +77,7 @@ if [[ -f LICENSE.txt ]]; then
   cp LICENSE.txt "recipe/recipe-scripts-license.txt"
 fi
 
-# Temporary hack to skip testing and push out Python 3.13.
+# Temporary hack to skip testing and push out Python 3.14.
 # Re-rendering after will revert this.
 EXTRA_CB_OPTIONS="${EXTRA_CB_OPTIONS:-} --no-test"
 
