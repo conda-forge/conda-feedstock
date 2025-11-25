@@ -1,5 +1,5 @@
-{% set version = "25.9.1" %}
-{% set sha256 = "afb3cc2393a6a05afbc37420bebdd8d23198da35f079c234aa05fedf042745dd" %}
+{% set version = "25.11.0" %}
+{% set sha256 = "62aad5c046936b07e3ea44d6d908f2d94b427049420332def421e9c72ff3961e" %}
 # Running pytest requires the inclusion of test files which baloons
 # the size of the package; values can be "yes" or "no"
 {% set run_pytest = "no" %}
