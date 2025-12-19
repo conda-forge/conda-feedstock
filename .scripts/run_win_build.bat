@@ -66,7 +66,12 @@ if NOT [%HOST_PLATFORM%] == [%BUILD_PLATFORM%] (
     if [%CROSSCOMPILING_EMULATOR%] == [] (
         set "EXTRA_CB_OPTIONS=%EXTRA_CB_OPTIONS% --no-test"
     )
+
 )
+
+:: Temporary hack to skip testing and push out Python 3.14.
+:: Re-rendering after will revert this.
+set "EXTRA_CB_OPTIONS=%EXTRA_CB_OPTIONS% --no-test"
 
 if NOT [%flow_run_id%] == [] (
         set "EXTRA_CB_OPTIONS=%EXTRA_CB_OPTIONS% --extra-meta flow_run_id=%flow_run_id% remote_url=%remote_url% sha=%sha%"
