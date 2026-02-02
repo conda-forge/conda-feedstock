@@ -1,5 +1,5 @@
 channel_sources:
-- conda-forge,conda-forge/label/python_rc
+- conda-forge
 channel_targets:
 - conda-forge main
 docker_image:
@@ -12,6 +12,3 @@ python:
 - 3.14.* *_cp314
 target_platform:
 - linux-64
-zip_keys:
-- - python
-  - channel_sources

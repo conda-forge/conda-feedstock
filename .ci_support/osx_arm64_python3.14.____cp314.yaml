@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 MACOSX_SDK_VERSION:
 - '11.0'
 channel_sources:
-- conda-forge,conda-forge/label/python_rc
+- conda-forge
 channel_targets:
 - conda-forge main
 macos_machine:
@@ -16,6 +16,3 @@ python:
 - 3.14.* *_cp314
 target_platform:
 - osx-arm64
-zip_keys:
-- - python
-  - channel_sources
