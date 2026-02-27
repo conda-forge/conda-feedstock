@@ -1,5 +1,5 @@
-{% set version = "26.1.0" %}
-{% set sha256 = "ebb5573ff611f82377dd283401fbd823172c4d0573d798228a48e85f9acf7a8e" %}
+{% set version = "26.1.1" %}
+{% set sha256 = "4a3ca594c61b1ec316b6401ebc8515d0184a0eb7f61488da0628c44f0fea0764" %}
 # Running pytest requires the inclusion of test files which baloons
 # the size of the package; values can be "yes" or "no"
 {% set run_pytest = "no" %}
@@ -99,7 +99,10 @@ test:
     - commands_to_test.bat           # [win]
     - commands_to_test.sh            # [unix]
   downstreams:
-    - conda-smithy  # [py>=311 and py<314 and not osx]
+    # the minimum python version here needs to match
+    # the minimum version for the bot code base
+    # package `conda-forge-tick`
+    - conda-smithy  # [py>=312 and py<314 and not osx]
 
 about:
   home: https://conda.io
