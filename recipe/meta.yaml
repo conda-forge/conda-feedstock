@@ -99,6 +99,9 @@ test:
     - commands_to_test.bat           # [win]
     - commands_to_test.sh            # [unix]
   downstreams:
+    # the minimum python version here needs to match
+    # the minimum version for the bot code base
+    # package `conda-forge-tick`
     - conda-smithy  # [py>=312 and py<314 and not osx]
 
 about:
