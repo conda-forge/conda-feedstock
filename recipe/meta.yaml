@@ -71,7 +71,7 @@ requirements:
     - zstandard >=0.19.0
   run_constrained:
     - conda-build >=25.9
-    - conda-content-trust >=0.1.1
+    - conda-content-trust >=0.3.0
     - conda-env >=2.6
 
 test:
