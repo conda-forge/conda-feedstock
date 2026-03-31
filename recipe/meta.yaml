@@ -92,7 +92,6 @@ test:
     - m2-base        # [win]
   imports:
     - conda
-    - conda_env
   files:
     - test_runner.bat                # [win]
     - test_runner.sh                 # [unix]
