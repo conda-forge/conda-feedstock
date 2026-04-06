@@ -52,7 +52,7 @@ requirements:
     - archspec >=0.2.3
     - boltons >=23.0.0
     - charset-normalizer
-    - conda-libmamba-solver >=25.4.0
+    - conda-libmamba-solver >=25.11.0
     - conda-package-handling >=2.2.0
     - distro >=1.5.0
     - frozendict >=2.4.2
@@ -71,7 +71,7 @@ requirements:
     - zstandard >=0.19.0
   run_constrained:
     - conda-build >=25.9
-    - conda-content-trust >=0.1.1
+    - conda-content-trust >=0.3.0
     - conda-env >=2.6
 
 test:
@@ -92,7 +92,6 @@ test:
     - m2-base        # [win]
   imports:
     - conda
-    - conda_env
   files:
     - test_runner.bat                # [win]
     - test_runner.sh                 # [unix]
