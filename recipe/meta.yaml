@@ -15,7 +15,7 @@ source:
   folder: conda-src
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install conda-src/ --no-deps --no-build-isolation -vv && {{ PYTHON }} -m conda init --install
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
@@ -60,7 +60,7 @@ requirements:
     - menuinst >=2
     - packaging >=23.0
     - platformdirs >=3.10.0
-    - pluggy >=1.0.0
+    - pluggy >=1.6.0
     - pycosat >=0.6.3
     - python
     - requests >=2.28.0,<3
