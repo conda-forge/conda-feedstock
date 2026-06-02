@@ -1,5 +1,5 @@
-{% set version = "26.5.0" %}
-{% set sha256 = "1bb6bf13ea89a7736c0d35adedf8423b108ff3bbfbda35f850838b9d70570bfb" %}
+{% set version = "26.5.2" %}
+{% set sha256 = "4c0227d37f7a54b332fea5b12ba855252ca80fbc1452bb66522eb74084039be5" %}
 # Running pytest requires the inclusion of test files which baloons
 # the size of the package; values can be "yes" or "no"
 {% set run_pytest = "no" %}
@@ -15,7 +15,7 @@ source:
   folder: conda-src
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install conda-src/ --no-deps --no-build-isolation -vv && {{ PYTHON }} -m conda init --install
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
