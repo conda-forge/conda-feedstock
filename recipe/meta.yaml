@@ -73,7 +73,7 @@ requirements:
     - conda-lockfiles >=0.2.0
     - conda-self >=0.2.0
     - conda-pypi >=0.9.0
-    - conda-rattler-solver >=0.1.0
+    - conda-rattler-solver >=0.1.1
   run_constrained:
     - conda-build >=25.9
     - conda-content-trust >=0.3.0
