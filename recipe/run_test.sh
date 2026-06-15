@@ -13,7 +13,7 @@ eval "$(python -m conda shell.bash hook)"
 conda info --all
 
 # create, activate, and deactivate a conda environment
-conda create --yes --prefix "./built-conda-test-env" "patch" || exit 1
+conda create --yes -c conda-forge --prefix "./built-conda-test-env" "patch" || exit 1
 
 conda activate "./built-conda-test-env"
 echo "CONDA_PREFIX=${CONDA_PREFIX}"
