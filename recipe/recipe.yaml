@@ -14,15 +14,16 @@ source:
   target_directory: conda-src
 
 build:
-  # These are present when the new environment is created
-  # so we have to exempt them from the list of initial files
-  # for conda-build to realize they should be included.
   number: 2
   script:
     content:
+      # Prevents issues like https://github.com/conda-forge/conda-feedstock/issues/280
       - rm -rf conda-src/tests/
       - ${{ PYTHON }} -m pip install conda-src/ --no-deps --no-build-isolation -vv && ${{ PYTHON }} -m conda init --install
   always_include_files:
+    # These are present when the new environment is created
+    # so we have to exempt them from the list of initial files
+    # for conda-build to realize they should be included.
     - if: unix
       then:
         - bin/conda
@@ -95,6 +96,9 @@ tests:
         - conda
       pip_check: false
   - if: match(python, ">=3.12") and match(python, "<3.14") and not osx
+    # the minimum python ^^^^ version here needs to match
+    # the minimum version for the bot code base
+    # package `conda-forge-tick`
     then:
       downstream: conda-smithy
   - script:
