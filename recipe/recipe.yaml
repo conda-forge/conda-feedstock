@@ -1,8 +1,8 @@
 schema_version: 1
 
 context:
-  version: "26.5.2"
-  sha256: 4c0227d37f7a54b332fea5b12ba855252ca80fbc1452bb66522eb74084039be5
+  version: "26.5.3"
+  sha256: 473f8e8366bba2b4672cc5e350b66604f253541f11c40218a1a1a859527c3592
 
 package:
   name: conda
@@ -14,7 +14,7 @@ source:
   target_directory: conda-src
 
 build:
-  number: 2
+  number: 1
   script:
     content:
       # Prevents issues like https://github.com/conda-forge/conda-feedstock/issues/280
