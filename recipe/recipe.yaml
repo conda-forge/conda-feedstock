@@ -22,6 +22,7 @@ build:
       - ${{ PYTHON }} -m pip install conda-src/ --no-deps --no-build-isolation -vv && ${{ PYTHON }} -m conda init --install
       # conda-build rewrites these launchers to use the environment's Python,
       # but rattler-build requires an explicit prefix to detect and relocate.
+      # Prevents issues like https://github.com/conda-forge/conda-feedstock/issues/304
       - if: unix
         then:
           - sed -i.bak "1s|.*|#!${{ PYTHON }}|" "$PREFIX/bin/conda" "$PREFIX/condabin/conda"
