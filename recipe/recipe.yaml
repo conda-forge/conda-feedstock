@@ -14,12 +14,18 @@ source:
   target_directory: conda-src
 
 build:
-  number: 1
+  number: 2
   script:
     content:
       # Prevents issues like https://github.com/conda-forge/conda-feedstock/issues/280
       - rm -rf conda-src/tests/
       - ${{ PYTHON }} -m pip install conda-src/ --no-deps --no-build-isolation -vv && ${{ PYTHON }} -m conda init --install
+      # conda-build rewrites these launchers to use the environment's Python,
+      # but rattler-build requires an explicit prefix to detect and relocate.
+      - if: unix
+        then:
+          - sed -i.bak "1s|.*|#!${{ PYTHON }}|" "$PREFIX/bin/conda" "$PREFIX/condabin/conda"
+          - rm "$PREFIX/bin/conda.bak" "$PREFIX/condabin/conda.bak"
   always_include_files:
     # These are present when the new environment is created
     # so we have to exempt them from the list of initial files
