@@ -9,16 +9,21 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://github.com/conda/conda/releases/download/${{ version }}/conda-${{ version }}.tar.gz
-  sha256: ${{ sha256 }}
-  target_directory: conda-src
+  - url: https://github.com/conda/conda/releases/download/${{ version }}/conda-${{ version }}.tar.gz
+    sha256: ${{ sha256 }}
+    target_directory: conda-src
+  # These Windows launchers are built in public CI and signed with community-owned certificates
+  - url: https://github.com/conda/conda-launchers/releases/download/24.7.1-5/cli-64-24.7.1-e8b2e36_gcc_5.exe
+    sha256: 4d8c479577961d0c6d940966f7987fbb0d6fc98b80edc03b00ee949dd8c1b3e2
+    target_directory: signed-launchers
 
 build:
-  number: 1
+  number: 2
   script:
     content:
       # Prevents issues like https://github.com/conda-forge/conda-feedstock/issues/280
       - rm -rf conda-src/tests/
+      - cp signed-launchers/cli-64-24.7.1-e8b2e36_gcc_5.exe conda-src/conda/shell/cli-64.exe
       - ${{ PYTHON }} -m pip install conda-src/ --no-deps --no-build-isolation -vv && ${{ PYTHON }} -m conda init --install
   always_include_files:
     # These are present when the new environment is created
