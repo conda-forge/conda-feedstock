@@ -1,8 +1,8 @@
 schema_version: 1
 
 context:
-  version: "26.5.3"
-  sha256: 473f8e8366bba2b4672cc5e350b66604f253541f11c40218a1a1a859527c3592
+  version: "26.7.0"
+  sha256: d15d9735d7b46a2c54757b2844b66e71f62441daff36baef070f3cb3a3b257c1
 
 package:
   name: conda
@@ -14,7 +14,7 @@ source:
   target_directory: conda-src
 
 build:
-  number: 2
+  number: 0
   script:
     content:
       # Prevents issues like https://github.com/conda-forge/conda-feedstock/issues/280
@@ -49,7 +49,7 @@ requirements:
         - python
         - cross-python_${{ target_platform }}
     - if: win
-      then: 
+      then:
         - m2-filesystem
         - m2-bash
         - m2-base
