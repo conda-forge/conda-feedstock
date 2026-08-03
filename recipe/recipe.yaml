@@ -1,8 +1,8 @@
 schema_version: 1
 
 context:
-  version: "26.5.3"
-  sha256: 473f8e8366bba2b4672cc5e350b66604f253541f11c40218a1a1a859527c3592
+  version: "26.7.0"
+  sha256: d15d9735d7b46a2c54757b2844b66e71f62441daff36baef070f3cb3a3b257c1
 
 package:
   name: conda
@@ -18,7 +18,7 @@ source:
     target_directory: signed-launchers
 
 build:
-  number: 2
+  number: 0
   script:
     content:
       # Prevents issues like https://github.com/conda-forge/conda-feedstock/issues/280
@@ -54,7 +54,7 @@ requirements:
         - python
         - cross-python_${{ target_platform }}
     - if: win
-      then: 
+      then:
         - m2-filesystem
         - m2-bash
         - m2-base
@@ -73,6 +73,9 @@ requirements:
     - tqdm >=4
   run:
     - archspec >=0.2.3
+    - if: match(python, "<3.14")
+      then: 
+        - backports.zstd >=1.3.0
     - boltons >=23.0.0
     - charset-normalizer
     - conda-package-handling >=2.2.0
@@ -90,11 +93,10 @@ requirements:
     - setuptools >=60.0.0
     - tqdm >=4
     - truststore >=0.8.0
-    - zstandard >=0.19.0
     # Plugins to bundle with conda
     - conda-libmamba-solver >=26.4.1
     - conda-lockfiles >=0.2.0
-    - conda-pypi >=0.9.0
+    - conda-pypi >=0.10.1
     - conda-rattler-solver >=0.1.1
     - conda-self >=0.2.0
   run_constraints:
