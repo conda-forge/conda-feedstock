@@ -57,7 +57,7 @@ requirements:
   host:
     - python
     - pip
-    - conda-launchers 24.7.1
+    - conda-launchers ==24.7.1
     - hatchling >=1.12.2
     - hatch-vcs >=0.2.0
     # for `conda init` in build/script above
