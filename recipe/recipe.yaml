@@ -1,8 +1,8 @@
 schema_version: 1
 
 context:
-  version: "26.7.0"
-  sha256: d15d9735d7b46a2c54757b2844b66e71f62441daff36baef070f3cb3a3b257c1
+  version: "26.7.1"
+  sha256: 012e40073474b5db0c63b447aa1892fd6609bc81f998488221e18f4ee64144e5
 
 package:
   name: conda
