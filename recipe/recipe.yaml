@@ -14,7 +14,7 @@ source:
   target_directory: conda-src
 
 build:
-  number: 0
+  number: 1
   script:
     content:
       # Prevents issues like https://github.com/conda-forge/conda-feedstock/issues/280
