@@ -1,8 +1,8 @@
 schema_version: 1
 
 context:
-  version: "26.7.1"
-  sha256: 012e40073474b5db0c63b447aa1892fd6609bc81f998488221e18f4ee64144e5
+  version: "26.7.2"
+  sha256: 3b9ba0833a52a65960bfd9c40238f9700f673a70a540351b5c6312eedc97ab98
 
 package:
   name: conda
@@ -20,13 +20,6 @@ build:
       # Prevents issues like https://github.com/conda-forge/conda-feedstock/issues/280
       - rm -rf conda-src/tests/
       - ${{ PYTHON }} -m pip install conda-src/ --no-deps --no-build-isolation -vv && ${{ PYTHON }} -m conda init --install
-      # conda-build rewrites these launchers to use the environment's Python,
-      # but rattler-build requires an explicit prefix to detect and relocate.
-      # Prevents issues like https://github.com/conda-forge/conda-feedstock/issues/304
-      - if: unix
-        then:
-          - sed -i.bak "1s|.*|#!${{ PYTHON }}|" "$PREFIX/bin/conda" "$PREFIX/condabin/conda"
-          - rm "$PREFIX/bin/conda.bak" "$PREFIX/condabin/conda.bak"
   always_include_files:
     # These are present when the new environment is created
     # so we have to exempt them from the list of initial files
@@ -69,7 +62,7 @@ requirements:
   run:
     - archspec >=0.2.3
     - if: match(python, "<3.14")
-      then: 
+      then:
         - backports.zstd >=1.3.0
     - boltons >=23.0.0
     - charset-normalizer
