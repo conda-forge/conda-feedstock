@@ -14,11 +14,12 @@ source:
   target_directory: conda-src
 
 build:
-  number: 0
+  number: 1
   script:
     content:
       # Prevents issues like https://github.com/conda-forge/conda-feedstock/issues/280
       - rm -rf conda-src/tests/
+      - cp "${{ PREFIX }}/share/conda-launchers/cli-64.exe" conda-src/conda/shell/
       - ${{ PYTHON }} -m pip install conda-src/ --no-deps --no-build-isolation -vv && ${{ PYTHON }} -m conda init --install
   always_include_files:
     # These are present when the new environment is created
@@ -49,6 +50,7 @@ requirements:
   host:
     - python
     - pip
+    - conda-launchers ==24.7.1
     - hatchling >=1.12.2
     - hatch-vcs >=0.2.0
     # for `conda init` in build/script above
