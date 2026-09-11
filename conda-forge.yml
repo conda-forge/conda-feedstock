@@ -5,6 +5,7 @@ build_platform:
   osx_arm64: osx_64
 conda_build:
   pkg_format: '2'
+conda_build_tool: rattler-build
 conda_forge_output_validation: true
 github:
   branch_name: main
@@ -12,5 +13,6 @@ github:
 provider:
   linux_aarch64: default
   linux_ppc64le: default
+  linux_riscv64: default
+  win_arm64: default
 test: native_and_emulated
-conda_build_tool: rattler-build
