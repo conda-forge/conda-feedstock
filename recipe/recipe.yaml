@@ -12,9 +12,12 @@ source:
   url: https://github.com/conda/conda/releases/download/${{ version }}/conda-${{ version }}.tar.gz
   sha256: ${{ sha256 }}
   target_directory: conda-src
+  patches:
+    # TODO: Remove in 26.9.x
+    - 0001-widen-ruamel-yaml-metadata.patch
 
 build:
-  number: 1
+  number: 2
   script:
     content:
       # Prevents issues like https://github.com/conda-forge/conda-feedstock/issues/280
@@ -96,7 +99,7 @@ tests:
   - python:
       imports:
         - conda
-      pip_check: false
+      pip_check: true
   # TODO: Restore the conda-smithy downstream test after conda-forge packages
   # a rattler-build release containing
   # https://github.com/prefix-dev/rattler-build/pull/2751.
