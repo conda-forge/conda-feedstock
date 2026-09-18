@@ -13,6 +13,7 @@ source:
   sha256: ${{ sha256 }}
   target_directory: conda-src
   patches:
+    # TODO: Remove in 26.9.x
     - 0001-widen-ruamel-yaml-metadata.patch
 
 build:
