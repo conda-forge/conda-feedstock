@@ -16,7 +16,14 @@ source:
 build:
   number: 0
   python_version_independent: true
+  skip: true  # [not is_python_min]
   script: {{ PYTHON }} -m pip install conda-src/ --no-deps --no-build-isolation -vv && {{ PYTHON }} -m conda init --install
+  # `conda init --install` creates Scripts/conda-script.py next to Scripts/conda.exe,
+  # so conda-build treats conda.exe as an entry point launcher and drops it for
+  # python_version_independent builds. Declare the entry point so that conda
+  # recreates the launcher at install time.
+  entry_points:                     # [win]
+    - conda = conda.cli:main        # [win]
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
