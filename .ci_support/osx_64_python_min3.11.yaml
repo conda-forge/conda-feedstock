@@ -7,10 +7,8 @@ channel_sources:
 channel_targets:
 - conda-forge main
 macos_machine:
-- arm64-apple-darwin20.0.0
+- x86_64-apple-darwin13.4.0
 python_min:
 - '3.11'
 target_platform:
-- osx-arm64
-zstd_module:
-- stdlib
+- osx-64

@@ -44,17 +44,17 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>osx_64_zstd_modulebackports</td>
+              <td>osx_64_python_min3.11</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=174&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_zstd_modulebackports" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python_min3.11" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_zstd_modulestdlib</td>
+              <td>osx_64_python_min3.14</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=174&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_zstd_modulestdlib" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python_min3.14" alt="variant">
                 </a>
               </td>
             </tr>

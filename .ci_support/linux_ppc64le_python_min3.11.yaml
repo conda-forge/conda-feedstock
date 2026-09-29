@@ -7,6 +7,4 @@ docker_image:
 python_min:
 - '3.11'
 target_platform:
-- linux-64
-zstd_module:
-- stdlib
+- linux-ppc64le

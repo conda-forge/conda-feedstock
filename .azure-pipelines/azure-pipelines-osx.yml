@@ -8,8 +8,8 @@ jobs:
     vmImage: $(VMIMAGE)
   strategy:
     matrix:
-      osx_64_zstd_modulebackports:
-        CONFIG: osx_64_zstd_modulebackports
+      osx_64_python_min3.11:
+        CONFIG: osx_64_python_min3.11
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         build_workspace_dir: ~/miniforge3/conda-bld
@@ -18,8 +18,8 @@ jobs:
         resize_partitions: false
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
-      osx_64_zstd_modulestdlib:
-        CONFIG: osx_64_zstd_modulestdlib
+      osx_64_python_min3.14:
+        CONFIG: osx_64_python_min3.14
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         build_workspace_dir: ~/miniforge3/conda-bld
@@ -28,8 +28,8 @@ jobs:
         resize_partitions: false
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
-      osx_arm64_zstd_modulebackports:
-        CONFIG: osx_arm64_zstd_modulebackports
+      osx_arm64_python_min3.11:
+        CONFIG: osx_arm64_python_min3.11
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         build_workspace_dir: ~/miniforge3/conda-bld
@@ -38,8 +38,8 @@ jobs:
         resize_partitions: false
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
-      osx_arm64_zstd_modulestdlib:
-        CONFIG: osx_arm64_zstd_modulestdlib
+      osx_arm64_python_min3.14:
+        CONFIG: osx_arm64_python_min3.14
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         build_workspace_dir: ~/miniforge3/conda-bld
