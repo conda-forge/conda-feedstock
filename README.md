@@ -3,7 +3,7 @@ About conda-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/conda-feedstock/blob/main/LICENSE.txt)
 
-Home: https://conda.io
+Home: https://conda.io/
 
 Package license: BSD-3-Clause
 
@@ -18,7 +18,6 @@ management system for installing multiple versions of software packages
 and their dependencies and switching easily between them. It works on
 Linux, OS X and Windows, and was created for Python programs but can
 package and distribute any software.
-
 
 Current build status
 ====================
@@ -45,10 +44,17 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>osx_64_is_python_mintruepython3.11.____cpython</td>
+              <td>osx_64_zstd_modulebackports</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=174&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_is_python_mintruepython3.11.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_zstd_modulebackports" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_zstd_modulestdlib</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=174&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/conda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_zstd_modulestdlib" alt="variant">
                 </a>
               </td>
             </tr>

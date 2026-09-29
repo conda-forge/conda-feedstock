@@ -1,0 +1,10 @@
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+python_min:
+- '3.11'
+target_platform:
+- win-64
+zstd_module:
+- backports
