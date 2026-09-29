@@ -1,8 +1,8 @@
 schema_version: 1
 
 context:
-  version: "26.7.2"
-  sha256: 3b9ba0833a52a65960bfd9c40238f9700f673a70a540351b5c6312eedc97ab98
+  version: "26.7.3"
+  sha256: 2b9ec6f71cc971d0d57aeeffd2f9bb8684f8bf7a716e43986121208f596f7a72
 
 package:
   name: conda
@@ -17,7 +17,7 @@ source:
     - 0001-widen-ruamel-yaml-metadata.patch
 
 build:
-  number: 2
+  number: 0
   script:
     content:
       # Prevents issues like https://github.com/conda-forge/conda-feedstock/issues/280
