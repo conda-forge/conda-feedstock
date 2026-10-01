@@ -19,11 +19,7 @@ build:
     content:
       # Prevents issues like https://github.com/conda-forge/conda-feedstock/issues/280
       - rm -rf conda-src/tests/
-      - ${{ PYTHON }} -m pip install conda-src/ --no-deps --no-build-isolation -vv
-      # Support users upgrading from defaults conda 26.7.x to conda-forge.
-      - if: win
-        then: copy /Y "%PREFIX%\share\conda-launchers\cli-arm64.exe" "%SP_DIR%\conda\shell\cli-arm64.exe"
-      - ${{ PYTHON }} -m conda init --install
+      - ${{ PYTHON }} -m pip install conda-src/ --no-deps --no-build-isolation -vv && ${{ PYTHON }} -m conda init --install
   always_include_files:
     # These are present when the new environment is created
     # so we have to exempt them from the list of initial files
